@@ -1,0 +1,11 @@
+*** Settings ***
+Documentation     To validate for login page whether the User name and Password is working as per requirements and statisfied all the validation condition .
+Library           Selenium2Library
+Variables         myvariables.py
+Resource          Login.robot
+
+*** Test Cases ***
+Test Cases
+    Login
+    #Client Login
+    #Login Page Validation

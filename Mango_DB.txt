@@ -1,0 +1,36 @@
+*** settings ***
+Library           Selenium2Library
+Library           Collections
+Library           String
+Library           MongoDBLibrary
+Variables         Mango_Values.py
+
+*** Test Cases ***
+mango Db
+    Connect to MongoDB    dbHost=${host}    dbPort=${port}
+    Comment    Retrieve a list of databases on the MongoDB server
+    @{output} =    Get MongoDB Databases
+    Log Many    @{output}
+    Comment    Verify the order in which the databases are returned by checking specific elements of return for exact db name
+    #Should Contain    ${output}    Checks360_OW_Testing
+    #@{output1}    Get MongoDB Collections    Checks360_OW_Testing
+    #Log Many    @{output1}
+    #${output2}    Retrieve Some MongoDB Records    Checks360_OW_Testing    caseregistrations    {"firstName" : "Mani"}
+    #Log Many    ${output2}
+    #${checks}    Get Mongodb Collection Count    Checks360_OW_Testing    caseregistrations
+    #Log Many    ${checks}
+    ${checks_Data} =    Retrieve Mongodb Records With Desired Fields    Checks360_OW_Testing    caseregistrations    {"email" : "tech.cod.mk13@gmail.com"},{"employmentStatus" : "Experienced"}
+    @{Cur} =    Split String    ${checks_Data}    ${EMPTY}
+    Log Many    @{Cur}
+    #Log    ${checks_Data}
+    #Should Contain    ${checks_Data}    firstName
+    #Should Contain    ${checks_Data}    Karthikeyan
+    #${Cur} =    Split String    ${checks_Data}    ${EMPTY}
+    #Log Many    ${Cur}[0]
+    #Log Many    ${checks}
+    #Log Many    ${checks_Data}
+    #${CurCount} =    Retrieve All MongoDB Records    Checks360_OW_Testing    fields
+    #@{Cur} =    Split String    ${CurCount}
+    #Log Many    ${CurCount}[4]
+    #${result}=    Retrieve All MongoDB Records    Checks360_OW_Testing    checks    {"Field" : "First Name","Visibility" : true,"Enable" : true,"Required" : true}
+    #Log Many    ${result}

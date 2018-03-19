@@ -1,0 +1,2622 @@
+*** Settings ***
+Library           Selenium2Library
+Library           String
+Library           Collections
+Variables         myvariables.py
+Variables         Case_Reg_Values.py
+Resource          Login.robot
+Resource          Case_Registration.robot
+Variables         Case_Reg_Alerts.py
+Variables         Case_Reg_Path.py
+Variables         DataEntry_Path.py
+Variables         DataEntry_Values.py
+Variables         CaseManager_Path.py
+Variables         CaseManager_Values.py
+Variables         Master_Path.py
+Variables         Master_Values.py
+
+*** Test Cases ***
+To validate for candidate data save temprory Should not initiate a mail to candidate and should show in case registration dash board
+    #Set Selenium Speed    5 seconds
+    Login
+    Random String
+    sleep    3s
+    click element    ${Case_Registration}
+    sleep    2s
+    click element    ${Register_New_Case}
+    wait until element is enabled    ${Client_Project}
+    click element    ${Client_Project}
+    input text    ${Client_Location}    ${Client1}
+    click element    ${Client_Select}
+    wait until element is enabled    ${Data_Entry}
+    click element    ${Data_Entry}
+    wait until element is enabled    ${Candidate}
+    click element    ${Candidate}
+    wait until element is enabled    ${First_Name_Location}
+    input text    ${First_Name_Location}    ${TEMP_FIRST_NAME}
+    input text    ${Last_Name_Location}    ${TEMP_LAST_NAME}
+    click element    ${Date_Of_Birth}
+    click element    ${Month}
+    click element    ${Years}
+    click element    ${Year}
+    click element    ${Select_Year}
+    click element    ${Select_Month}
+    click element    ${Select_Day}
+    click element    ${Gender_Location}
+    click element    ${Gender_Select}
+    wait until element is enabled    ${Email_Location}
+    input text    ${Email_Location}    ${RANDOM_STRING}@gmail.com
+    input text    ${Father_First_Name_Location}    ${TEMP_FIRST_NAME}
+    input text    ${Father_Last_Name_Location}    ${TEMP_LAST_NAME}
+    sleep    3s
+    click element    ${Client_ID}
+    input text    ${Client_ID}    ${Client_Ref_NO}
+    click element    ${Marital_Status}
+    click element    ${Marital_Status_Select}
+    click element    ${Employe_ID_Location}
+    input text    ${Employe_ID_Location}    ${Employe_ID}
+    input text    ${Landline_Number_Location}    ${Landline_Number}
+    input text    ${Mobile_Number_Location}    ${Mobile_Number}
+    click element    ${Priority}
+    click element    ${Priority_Select}
+    wait until element is enabled    ${HR_MailID}
+    click element    ${HR_MailID}
+    input text    ${HR_MailID}    ${HR_Email}
+    click element    ${checkBOx}
+    sleep    2s
+    click element    ${Save}
+    sleep    2s
+    click element    ${Save_ok}
+    sleep    2s
+    close Browser
+    sleep    3s
+    open Browser    ${G_URL}    ${BROWSER}
+    Maximize Browser Window
+    sleep    3s
+    input text    ${GMAIL_LOCATION}    ${GMAIL_ID}
+    click element    ${ID_NEXT}
+    sleep    5s
+    input text    ${GMAIL_PASSWORD_LOCATION}    ${GMAIL_PASSWORD}
+    click element    ${PASSWORD_NEXT}
+    sleep    10s
+    click element    ${E_SEARCH}
+    input text    ${E_SEARCH}    ${Gmail_Search}
+    sleep    5s
+    click element    ${E_S_CLICK}
+    sleep    3s
+    click element    ${E_IN_LINK}
+    Element Should Not Be Visible    ${Setup_Password}
+    close Browser
+    sleep    3s
+    Login
+    sleep    2s
+    click element    ${Case_Registration}
+    sleep    3s
+    wait until element is enabled    ${Case_DB_Client}
+    click element    ${Case_DB_Client}
+    input text    ${Case_DB_Cli_Text}    ${client1}
+    click element    ${Case_DB_Cli_Selc}
+    wait until element is enabled    ${Case_DB_Firstname}
+    input text    ${Case_DB_Firstname}    ${TEMP_FIRST_NAME}
+    wait until element is enabled    ${Case_DB_Lastname}
+    input text    ${Case_DB_Lastname}    ${TEMP_LAST_NAME}
+    sleep    3s
+    click element    ${Search_Button}
+    close Browser
+
+To validate for the save case for the services provider does not sent initiate mail
+    Close Browser
+    sleep    3s
+    Login
+    Random String
+    sleep    3s
+    click element    ${Case_Registration}
+    wait until element is enabled    ${Register_New_Case}
+    click element    ${Register_New_Case}
+    wait until element is enabled    ${Client_Project}
+    click element    ${Client_Project}
+    input text    ${Client_Location}    ${Client1}
+    click element    ${Client_Select}
+    wait until element is enabled    ${Data_Entry}
+    click element    ${Data_Entry}
+    wait until element is enabled    ${Candidate}
+    click element    ${Candidate}
+    wait until element is enabled    ${First_Name_Location}
+    input text    ${First_Name_Location}    ${TEMP_FIRST_NAME}
+    input text    ${Last_Name_Location}    ${TEMP_LAST_NAME}
+    click element    ${Date_Of_Birth}
+    click element    ${Month}
+    click element    ${Years}
+    click element    ${Year}
+    click element    ${Select_Year}
+    click element    ${Select_Month}
+    click element    ${Select_Day}
+    click element    ${Gender_Location}
+    click element    ${Gender_Select}
+    wait until element is enabled    ${Email_Location}
+    input text    ${Email_Location}    ${RANDOM_STRING}@gmail.com
+    input text    ${Father_First_Name_Location}    ${TEMP_FIRST_NAME}
+    input text    ${Father_Last_Name_Location}    ${TEMP_LAST_NAME}
+    #sleep    3s
+    click element    ${Client_ID}
+    input text    ${Client_ID}    ${Client_Ref_NO}
+    click element    ${Marital_Status}
+    click element    ${Marital_Status_Select}
+    click element    ${Employe_ID_Location}
+    input text    ${Employe_ID_Location}    ${Employe_ID}
+    input text    ${Landline_Number_Location}    ${Landline_Number}
+    input text    ${Mobile_Number_Location}    ${Mobile_Number}
+    click element    ${Priority}
+    click element    ${Priority_Select}
+    wait until element is enabled    ${HR_MailID}
+    click element    ${HR_MailID}
+    input text    ${HR_MailID}    ${RANDOM_STRING}@gmail.com
+    click element    ${checkBOx}
+    sleep    3s
+    click element    ${Save_Submit}
+    sleep    3s
+    click element    ${Save_ok}
+    sleep    3s
+    close Browser
+    open Browser    ${G_URL}    ${BROWSER}
+    Maximize Browser Window
+    input text    ${GMAIL_LOCATION}    ${GMAIL_ID}
+    click element    ${ID_NEXT}
+    Wait Until Element Is Visible    ${GMAIL_PASSWORD_LOCATION}
+    input text    ${GMAIL_PASSWORD_LOCATION}    ${GMAIL_PASSWORD}
+    click element    ${PASSWORD_NEXT}
+    Wait Until Element Is Visible    ${E_SEARCH}    10s
+    click element    ${E_SEARCH}
+    input text    ${E_SEARCH}    ${Gmail_Search}
+    sleep    5s
+    click element    ${E_S_CLICK}
+    Wait Until Element Is Visible    ${E_IN_LINK}    15s
+    click element    ${E_IN_LINK}
+    Element Should Not Be Visible    ${Setup_Password}
+    close Browser
+
+To Validate for candidate set password
+    Close Browser
+    sleep    3s
+    Login
+    Random String
+    sleep    3s
+    click element    ${Case_Registration}
+    wait until element is enabled    ${Register_New_Case}
+    click element    ${Register_New_Case}
+    wait until element is enabled    ${Client_Project}
+    click element    ${Client_Project}
+    input text    ${Client_Location}    ${Client1}
+    click element    ${Client_Select}
+    wait until element is enabled    ${Data_Entry}
+    click element    ${Data_Entry}
+    wait until element is enabled    ${Candidate}
+    click element    ${Candidate}
+    wait until element is enabled    ${First_Name_Location}
+    input text    ${First_Name_Location}    ${TEMP_FIRST_NAME}
+    input text    ${Last_Name_Location}    ${TEMP_LAST_NAME}
+    click element    ${Date_Of_Birth}
+    click element    ${Month}
+    click element    ${Years}
+    click element    ${Year}
+    click element    ${Select_Year}
+    click element    ${Select_Month}
+    click element    ${Select_Day}
+    click element    ${Gender_Location}
+    click element    ${Gender_Select}
+    wait until element is enabled    ${Email_Location}
+    input text    ${Email_Location}    ${RANDOM_STRING}@gmail.com
+    input text    ${Father_First_Name_Location}    ${TEMP_FIRST_NAME}
+    input text    ${Father_Last_Name_Location}    ${TEMP_LAST_NAME}
+    #sleep    3s
+    click element    ${Client_ID}
+    input text    ${Client_ID}    ${Client_Ref_NO}
+    click element    ${Marital_Status}
+    click element    ${Marital_Status_Select}
+    click element    ${Client_ID}
+    input text    ${Client_ID}    ${Client_Ref_NO}
+    click element    ${Employe_ID_Location}
+    input text    ${Employe_ID_Location}    ${Employe_ID}
+    input text    ${Landline_Number_Location}    ${Landline_Number}
+    input text    ${Mobile_Number_Location}    ${Mobile_Number}
+    click element    ${Priority}
+    click element    ${Priority_Select}
+    sleep    3s
+    click element    ${HR_MailID}
+    input text    ${HR_MailID}    ${HR_Email}
+    click element    ${checkBOx}
+    sleep    3s
+    click element    ${Save_Submit}
+    sleep    3s
+    click element    ${Save_ok}
+    sleep    3s
+    close Browser
+    open Browser    ${G_URL}    ${BROWSER}
+    Maximize Browser Window
+    input text    ${GMAIL_LOCATION}    ${GMAIL_ID}
+    click element    ${ID_NEXT}
+    sleep    5s
+    input text    ${GMAIL_PASSWORD_LOCATION}    ${GMAIL_PASSWORD}
+    click element    ${PASSWORD_NEXT}
+    sleep    10s
+    click element    ${E_SEARCH}
+    input text    ${E_SEARCH}    ${Gmail_Search}
+    sleep    5s
+    click element    ${E_S_CLICK}
+    sleep    5s
+    click element    ${E_IN_LINK}
+    sleep    2s
+    click element    ${Setup_Password}
+    sleep    3s
+    Select Window    title=Checks360
+    input text    ${NEW_PASSWORD LOCATION}    ${INVALID}
+    click element    ${CONFIRM BUTTON}
+    sleep    3s
+    click element    ${PASSWORD_ALERT}
+    input text    ${CONFIRM PASSWORD LOCATION}    ${INVALID}
+    sleep    3s
+    click element    ${CONFIRM BUTTON}
+    sleep    3s
+    click element    ${PASSWORD_ALERT}
+    Clear Element Text    ${NEW_PASSWORD LOCATION}
+    input text    ${NEW_PASSWORD LOCATION}    ${Email}
+    Clear Element Text    ${CONFIRM PASSWORD LOCATION}
+    input text    ${CONFIRM PASSWORD LOCATION}    ${INVALID}
+    sleep    3s
+    click element    ${CONFIRM BUTTON}
+    sleep    3s
+    click element    ${PASSWORD_ALERT}
+    input text    ${NEW_PASSWORD LOCATION}    ${INVALID}
+    input text    ${CONFIRM PASSWORD LOCATION}    ${CONFIRM PASSWORD}
+    sleep    3s
+    click element    ${CONFIRM BUTTON}
+    sleep    3s
+    click element    ${PASSWORD_ALERT}
+    Clear Element Text    ${NEW_PASSWORD LOCATION}
+    input text    ${NEW_PASSWORD LOCATION}    ${EMPTY}
+    Clear Element Text    ${CONFIRM PASSWORD LOCATION}
+    input text    ${CONFIRM PASSWORD LOCATION}    ${EMPTY}
+    sleep    3s
+    click element    ${CONFIRM BUTTON}
+    sleep    3s
+    click element    ${PASSWORD_ALERT}
+    Clear Element Text    ${NEW_PASSWORD LOCATION}
+    input text    ${NEW_PASSWORD LOCATION}    ${VALID_PASSWORD}
+    Clear Element Text    ${CONFIRM PASSWORD LOCATION}
+    input text    ${CONFIRM PASSWORD LOCATION}    ${VALID_PASSWORD}
+    sleep    3s
+    click element    ${CONFIRM BUTTON}
+    sleep    3s
+    click element    ${PASSWORD_ALERT}
+    sleep    3s
+    input text    ${USER LOCATION}    ${Email}
+    input password    ${PASSWORD LOCATION}    ${VALID_PASSWORD}
+    click button    ${LOGIN}
+    Close Browser
+
+To Validate for Candidate Flow with candidate Login
+    Close Browser
+    sleep    3s
+    Login
+    Random String
+    Random String Search values
+    sleep    3s
+    click element    ${Case_Registration}
+    wait until element is enabled    ${Register_New_Case}
+    click element    ${Register_New_Case}
+    wait until element is enabled    ${Client_Project}
+    click element    ${Client_Project}
+    input text    ${Client_Location}    ${Client1}
+    click element    ${Client_Select}
+    wait until element is enabled    ${Data_Entry}
+    click element    ${Data_Entry}
+    wait until element is enabled    ${Candidate}
+    click element    ${Candidate}
+    wait until element is enabled    ${First_Name_Location}
+    input text    ${First_Name_Location}    ${TEMP_FIRST_NAME}
+    input text    ${Last_Name_Location}    ${TEMP_LAST_NAME}
+    click element    ${Date_Of_Birth}
+    click element    ${Month}
+    click element    ${Years}
+    click element    ${Year}
+    click element    ${Select_Year}
+    click element    ${Select_Month}
+    click element    ${Select_Day}
+    click element    ${Gender_Location}
+    click element    ${Gender_Select}
+    wait until element is enabled    ${Email_Location}
+    input text    ${Email_Location}    ${RANDOM_STRING}@gmail.com
+    input text    ${Father_First_Name_Location}    ${TEMP_FIRST_NAME}
+    input text    ${Father_Last_Name_Location}    ${TEMP_LAST_NAME}
+    #sleep    3s
+    click element    ${Client_ID}
+    input text    ${Client_ID}    ${Client_Ref_NO}
+    click element    ${Marital_Status}
+    click element    ${Marital_Status_Select}
+    click element    ${Employe_ID_Location}
+    input text    ${Employe_ID_Location}    ${Employe_ID}
+    input text    ${Landline_Number_Location}    ${Landline_Number}
+    input text    ${Mobile_Number_Location}    ${Mobile_Number}
+    click element    ${Priority}
+    click element    ${Priority_Select}
+    wait until element is enabled    ${HR_MailID}
+    click element    ${HR_MailID}
+    input text    ${HR_MailID}    ${Email}
+    click element    ${checkBOx}
+    wait until element is enabled    ${Save_Submit}
+    click element    ${Save_Submit}
+    wait until element is enabled    ${Save_But_Alert}
+    Element Should Contain    ${Alert_Message}    ${Save_submit_Candiate}
+    Click Element    ${Save_ok}
+    sleep    3s
+    close Browser
+    open Browser    ${G_URL}    ${BROWSER}
+    Maximize Browser Window
+    input text    ${GMAIL_LOCATION}    ${Email}
+    click element    ${ID_NEXT}
+    Wait Until Element Is Visible    ${GMAIL_PASSWORD_LOCATION}
+    input text    ${GMAIL_PASSWORD_LOCATION}    ${GMAIL_PASSWORD}
+    click element    ${PASSWORD_NEXT}
+    Wait Until Element Is Visible    ${E_SEARCH}    10s
+    click element    ${E_SEARCH}
+    input text    ${E_SEARCH}    ${Gmail_Search}
+    sleep    5s
+    click element    ${E_S_CLICK}
+    Wait Until Element Is Visible    ${E_IN_LINK}    15s
+    click element    ${E_IN_LINK}
+    sleep    3s
+    click element    ${Setup_Password}
+    sleep    3s
+    Select Window    title=Checks360
+    Wait Until Element Is Visible    ${NEW_PASSWORD_LOCATION}
+    Page Should Contain Element    ${NEW_PASSWORD_LOCATION}
+    input text    ${NEW_PASSWORD_LOCATION}    ${NEW_PASSWORD}
+    input text    ${CONFIRM_PASSWORD_LOCATION}    ${CONFIRM_PASSWORD}
+    click element    ${CONFIRM_BUTTON}
+    wait until element is enabled    ${Password_Alert}
+    click element    ${Password_Alert}
+    wait until element is enabled    ${USER LOCATION}
+    input text    ${USER LOCATION}    ${RANDOM_STRING}@gmail.com
+    input password    ${PASSWORD LOCATION}    ${NEW_PASSWORD}
+    click button    ${LOGIN}
+    #Element Text Should Be    ${Candidate_DE}    ${FIRST_NAME}
+    Close Browser
+
+To Validate for Client Services Provider Flow Click save & submit
+    Login
+    Random String
+    sleep    3s
+    click element    ${Case_Registration}
+    wait until element is enabled    ${Register_New_Case}
+    click element    ${Register_New_Case}
+    wait until element is enabled    ${Client_Project}
+    click element    ${Client_Project}
+    input text    ${Client_Location}    ${Client1}
+    click element    ${Client_Select}
+    wait until element is enabled    ${Data_Entry}
+    click element    ${Data_Entry}
+    wait until element is enabled    ${Service Provider}
+    click element    ${Service Provider}
+    wait until element is enabled    ${First_Name_Location}
+    input text    ${First_Name_Location}    ${TEMP_FIRST_NAME}
+    input text    ${Last_Name_Location}    ${TEMP_LAST_NAME}
+    click element    ${Date_Of_Birth}
+    click element    ${Month}
+    click element    ${Years}
+    click element    ${Year}
+    click element    ${Select_Year}
+    click element    ${Select_Month}
+    click element    ${Select_Day}
+    click element    ${Gender_Location}
+    click element    ${Gender_Select}
+    wait until element is enabled    ${Email_Location}
+    input text    ${Email_Location}    ${RANDOM_STRING}@gmail.com
+    input text    ${Father_First_Name_Location}    ${TEMP_FIRST_NAME}
+    input text    ${Father_Last_Name_Location}    ${TEMP_LAST_NAME}
+    sleep    3s
+    click element    ${Client_ID}
+    input text    ${Client_ID}    ${Client_Ref_NO}
+    click element    ${Marital_Status}
+    click element    ${Marital_Status_Select}
+    click element    ${Employe_ID_Location}
+    input text    ${Employe_ID_Location}    ${Employe_ID}
+    input text    ${Landline_Number_Location}    ${Landline_Number}
+    input text    ${Mobile_Number_Location}    ${Mobile_Number}
+    #wait until element is enabled    ${HR_MailID}
+    #click element    ${HR_MailID}
+    #input text    ${HR_MailID}    ${RANDOM_STRING}@gmail.com
+    #click element    ${Priority}
+    #click element    ${Priority_Select}
+    click element    ${checkBOx}
+    #click element    ${Insuff}
+    #click element    ${Insuff_Comment_Location}
+    #input text    ${Insuff_Comment_Location}    ${Insuff_Comment}
+    #wait until element is enabled    ${YTR}
+    #click element    ${YTR}
+    #click element    ${YTR_Comment_Location}
+    #input text    ${YTR_Comment_Location}    ${YTR_Comment}
+    #click element    ${RP}
+    #click element    ${RP_Comment_Location}
+    #input text    ${RP_Comment_Location}    ${RP_Comment}
+    click element    ${DataBase_CheckAll}
+    #click element    ${Case_Document}
+    #wait until element is enabled    ${upload_button}    5s
+    #choose file    ${upload_button}    ${File1}
+    #wait until element is enabled    ${componenttype}
+    #click element    ${componenttype}
+    #click element    ${component_option}
+    #wait until element is enabled    ${documenttype}
+    #click element    ${documenttype}
+    #click element    ${document_option}
+    #wait until element is enabled    ${document_download}
+    #click element    ${document_download}
+    #sleep    2s
+    #click element    ${Upload_Ok}
+    #sleep    2s
+    #click element    ${Case_Document}
+    #sleep    2s
+    #click element    ${document_delete}
+    #wait until element is enabled    ${Conformation_Alert_yes}
+    #Element Text Should Be    ${Save_But_Alert}    ${document_delete_Alert}
+    #click element    ${Conformation_Alert_yes}
+    #sleep    2s
+    #click element    ${Upload_Ok}
+    sleep    3s
+    click element    ${Save_Submit}
+    Close Browser
+
+To Validate for Client Services Provider Flow click Save button
+    Close Browser
+    sleep    3s
+    Login
+    Random String
+    sleep    3s
+    click element    ${Case_Registration}
+    wait until element is enabled    ${Register_New_Case}
+    click element    ${Register_New_Case}
+    wait until element is enabled    ${Client_Project}
+    click element    ${Client_Project}
+    input text    ${Client_Location}    ${Client1}
+    click element    ${Client_Select}
+    wait until element is enabled    ${Data_Entry}
+    click element    ${Data_Entry}
+    wait until element is enabled    ${Service Provider}
+    click element    ${Service Provider}
+    wait until element is enabled    ${First_Name_Location}
+    input text    ${First_Name_Location}    ${TEMP_FIRST_NAME}
+    input text    ${Last_Name_Location}    ${TEMP_LAST_NAME}
+    click element    ${Date_Of_Birth}
+    click element    ${Month}
+    click element    ${Years}
+    click element    ${Year}
+    click element    ${Select_Year}
+    click element    ${Select_Month}
+    click element    ${Select_Day}
+    click element    ${Gender_Location}
+    click element    ${Gender_Select}
+    wait until element is enabled    ${Email_Location}
+    input text    ${Email_Location}    ${RANDOM_STRING}@gmail.com
+    input text    ${Father_First_Name_Location}    ${TEMP_FIRST_NAME}
+    input text    ${Father_Last_Name_Location}    ${TEMP_LAST_NAME}
+    #sleep    3s
+    click element    ${Client_ID}
+    input text    ${Client_ID}    ${Client_Ref_NO}
+    click element    ${Marital_Status}
+    click element    ${Marital_Status_Select}
+    click element    ${Employe_ID_Location}
+    input text    ${Employe_ID_Location}    ${Employe_ID}
+    input text    ${Landline_Number_Location}    ${Landline_Number}
+    input text    ${Mobile_Number_Location}    ${Mobile_Number}
+    #wait until element is enabled    ${HR_MailID}
+    #click element    ${HR_MailID}
+    #input text    ${HR_MailID}    ${RANDOM_STRING}@gmail.com
+    #click element    ${Priority}
+    #click element    ${Priority_Select}
+    click element    ${checkBOx}
+    #click element    ${Insuff}
+    #click element    ${Insuff_Comment_Location}
+    #input text    ${Insuff_Comment_Location}    ${Insuff_Comment}
+    #wait until element is enabled    ${YTR}
+    #click element    ${YTR}
+    #click element    ${YTR_Comment_Location}
+    #input text    ${YTR_Comment_Location}    ${YTR_Comment}
+    #click element    ${RP}
+    #click element    ${RP_Comment_Location}
+    #input text    ${RP_Comment_Location}    ${RP_Comment}
+    click element    ${DataBase_CheckAll}
+    #click element    ${Case_Document}
+    #wait until element is enabled    ${upload_button}    5s
+    #choose file    ${upload_button}    ${File1}
+    #wait until element is enabled    ${componenttype}
+    #click element    ${componenttype}
+    #click element    ${component_option}
+    #wait until element is enabled    ${documenttype}
+    #click element    ${documenttype}
+    #click element    ${document_option}
+    #wait until element is enabled    ${document_download}
+    #click element    ${document_download}
+    #sleep    2s
+    #click element    ${Upload_Ok}
+    #sleep    2s
+    #click element    ${Case_Document}
+    #sleep    2s
+    #click element    ${document_delete}
+    #wait until element is enabled    ${Conformation_Alert_yes}
+    #Element Text Should Be    ${Save_But_Alert}    ${document_delete_Alert}
+    #click element    ${Conformation_Alert_yes}
+    #sleep    2s
+    #click element    ${Upload_Ok}
+    sleep    3s
+    click element    ${Save}
+    Close Browser
+
+To Validate for Client Candidate Flow in Save & Submit
+    Close Browser
+    sleep    3s
+    Login
+    Random String
+    sleep    3s
+    click element    ${Case_Registration}
+    wait until element is enabled    ${Register_New_Case}
+    click element    ${Register_New_Case}
+    wait until element is enabled    ${Client_Project}
+    click element    ${Client_Project}
+    input text    ${Client_Location}    ${Client1}
+    click element    ${Client_Select}
+    wait until element is enabled    ${Data_Entry}
+    click element    ${Data_Entry}
+    wait until element is enabled    ${Service Provider}
+    click element    ${Service Provider}
+    wait until element is enabled    ${First_Name_Location}
+    input text    ${First_Name_Location}    ${TEMP_FIRST_NAME}
+    input text    ${Last_Name_Location}    ${TEMP_LAST_NAME}
+    click element    ${Date_Of_Birth}
+    click element    ${Month}
+    click element    ${Years}
+    click element    ${Year}
+    click element    ${Select_Year}
+    click element    ${Select_Month}
+    click element    ${Select_Day}
+    click element    ${Gender_Location}
+    click element    ${Gender_Select}
+    wait until element is enabled    ${Email_Location}
+    input text    ${Email_Location}    ${RANDOM_STRING}@gmail.com
+    input text    ${Father_First_Name_Location}    ${TEMP_FIRST_NAME}
+    input text    ${Father_Last_Name_Location}    ${TEMP_LAST_NAME}
+    #sleep    3s
+    click element    ${Client_ID}
+    input text    ${Client_ID}    ${Client_Ref_NO}
+    click element    ${Marital_Status}
+    click element    ${Marital_Status_Select}
+    click element    ${Employe_ID_Location}
+    input text    ${Employe_ID_Location}    ${Employe_ID}
+    input text    ${Landline_Number_Location}    ${Landline_Number}
+    input text    ${Mobile_Number_Location}    ${Mobile_Number}
+    #wait until element is enabled    ${HR_MailID}
+    #click element    ${HR_MailID}
+    #input text    ${HR_MailID}    ${RANDOM_STRING}@gmail.com
+    #click element    ${Priority}
+    #click element    ${Priority_Select}
+    click element    ${checkBOx}
+    #click element    ${Insuff}
+    #click element    ${Insuff_Comment_Location}
+    #input text    ${Insuff_Comment_Location}    ${Insuff_Comment}
+    #wait until element is enabled    ${YTR}
+    #click element    ${YTR}
+    #click element    ${YTR_Comment_Location}
+    #input text    ${YTR_Comment_Location}    ${YTR_Comment}
+    #click element    ${RP}
+    #click element    ${RP_Comment_Location}
+    #input text    ${RP_Comment_Location}    ${RP_Comment}
+    click element    ${DataBase_CheckAll}
+    #click element    ${Case_Document}
+    #wait until element is enabled    ${upload_button}    5s
+    #choose file    ${upload_button}    ${File1}
+    #wait until element is enabled    ${componenttype}
+    #click element    ${componenttype}
+    #click element    ${component_option}
+    #wait until element is enabled    ${documenttype}
+    #click element    ${documenttype}
+    #click element    ${document_option}
+    #wait until element is enabled    ${document_download}
+    #click element    ${document_download}
+    #sleep    2s
+    #click element    ${Upload_Ok}
+    #sleep    2s
+    #click element    ${Case_Document}
+    #sleep    2s
+    #click element    ${document_delete}
+    #wait until element is enabled    ${Conformation_Alert_yes}
+    #Element Text Should Be    ${Save_But_Alert}    ${document_delete_Alert}
+    #click element    ${Conformation_Alert_yes}
+    #sleep    2s
+    #click element    ${Upload_Ok}
+    sleep    3s
+    click element    ${Save_Submit}
+    Close Browser
+
+To Validate for Client Candidate Flow in Save
+    Close Browser
+    sleep    3s
+    Login
+    Random String
+    sleep    3s
+    click element    ${Case_Registration}
+    wait until element is enabled    ${Register_New_Case}
+    click element    ${Register_New_Case}
+    wait until element is enabled    ${Client_Project}
+    click element    ${Client_Project}
+    input text    ${Client_Location}    ${Client1}
+    click element    ${Client_Select}
+    wait until element is enabled    ${Data_Entry}
+    click element    ${Data_Entry}
+    wait until element is enabled    ${Candidate}
+    click element    ${Candidate}
+    wait until element is enabled    ${First_Name_Location}
+    input text    ${First_Name_Location}    ${TEMP_FIRST_NAME}
+    input text    ${Last_Name_Location}    ${TEMP_LAST_NAME}
+    click element    ${Date_Of_Birth}
+    click element    ${Month}
+    click element    ${Years}
+    click element    ${Year}
+    click element    ${Select_Year}
+    click element    ${Select_Month}
+    click element    ${Select_Day}
+    click element    ${Gender_Location}
+    click element    ${Gender_Select}
+    wait until element is enabled    ${Email_Location}
+    input text    ${Email_Location}    ${RANDOM_STRING}@gmail.com
+    input text    ${Father_First_Name_Location}    ${TEMP_FIRST_NAME}
+    input text    ${Father_Last_Name_Location}    ${TEMP_LAST_NAME}
+    #sleep    3s
+    click element    ${Client_ID}
+    input text    ${Client_ID}    ${Client_Ref_NO}
+    click element    ${Marital_Status}
+    click element    ${Marital_Status_Select}
+    click element    ${Employe_ID_Location}
+    input text    ${Employe_ID_Location}    ${Employe_ID}
+    input text    ${Landline_Number_Location}    ${Landline_Number}
+    input text    ${Mobile_Number_Location}    ${Mobile_Number}
+    click element    ${Priority}
+    click element    ${Priority_Select}
+    wait until element is enabled    ${HR_MailID}
+    #wait until element is enabled    ${HR_MailID}
+    #click element    ${HR_MailID}
+    #input text    ${HR_MailID}    ${RANDOM_STRING}@gmail.com
+    #click element    ${Priority}
+    #click element    ${Priority_Select}
+    click element    ${checkBOx}
+    #click element    ${Insuff}
+    #click element    ${Insuff_Comment_Location}
+    #input text    ${Insuff_Comment_Location}    ${Insuff_Comment}
+    #wait until element is enabled    ${YTR}
+    #click element    ${YTR}
+    #click element    ${YTR_Comment_Location}
+    #input text    ${YTR_Comment_Location}    ${YTR_Comment}
+    #click element    ${RP}
+    #click element    ${RP_Comment_Location}
+    #input text    ${RP_Comment_Location}    ${RP_Comment}
+    click element    ${DataBase_CheckAll}
+    #click element    ${Case_Document}
+    #wait until element is enabled    ${upload_button}    5s
+    #choose file    ${upload_button}    ${File1}
+    #wait until element is enabled    ${componenttype}
+    #click element    ${componenttype}
+    #click element    ${component_option}
+    #wait until element is enabled    ${documenttype}
+    #click element    ${documenttype}
+    #click element    ${document_option}
+    #wait until element is enabled    ${document_download}
+    #click element    ${document_download}
+    #sleep    2s
+    #click element    ${Upload_Ok}
+    #sleep    2s
+    #click element    ${Case_Document}
+    #sleep    2s
+    #click element    ${document_delete}
+    #wait until element is enabled    ${Conformation_Alert_yes}
+    #Element Text Should Be    ${Save_But_Alert}    ${document_delete_Alert}
+    #click element    ${Conformation_Alert_yes}
+    #sleep    2s
+    #click element    ${Upload_Ok}
+    sleep    3s
+    click element    ${Save}
+    Close Browser
+
+To Validate for Project Services Provider Flow Click save & submit
+    Close Browser
+    sleep    3s
+    Login
+    Random String
+    sleep    3s
+    click element    ${Case_Registration}
+    wait until element is enabled    ${Register_New_Case}
+    click element    ${Register_New_Case}
+    wait until element is enabled    ${Client_Project}
+    click element    ${Client_Project}
+    input text    ${Client_Location}    ${Project1}
+    click element    ${Client_Select}
+    wait until element is enabled    ${Data_Entry}
+    click element    ${Data_Entry}
+    wait until element is enabled    ${Service Provider}
+    click element    ${Service Provider}
+    wait until element is enabled    ${First_Name_Location}
+    input text    ${First_Name_Location}    ${TEMP_FIRST_NAME}
+    input text    ${Last_Name_Location}    ${TEMP_LAST_NAME}
+    click element    ${Date_Of_Birth}
+    click element    ${Month}
+    click element    ${Years}
+    click element    ${Year}
+    click element    ${Select_Year}
+    click element    ${Select_Month}
+    click element    ${Select_Day}
+    click element    ${Gender_Location}
+    click element    ${Gender_Select}
+    wait until element is enabled    ${Email_Location}
+    input text    ${Email_Location}    ${RANDOM_STRING}@gmail.com
+    input text    ${Father_First_Name_Location}    ${TEMP_FIRST_NAME}
+    input text    ${Father_Last_Name_Location}    ${TEMP_LAST_NAME}
+    #sleep    3s
+    click element    ${Client_ID}
+    input text    ${Client_ID}    ${Client_Ref_NO}
+    click element    ${Marital_Status}
+    click element    ${Marital_Status_Select}
+    click element    ${Employe_ID_Location}
+    input text    ${Employe_ID_Location}    ${Employe_ID}
+    input text    ${Landline_Number_Location}    ${Landline_Number}
+    input text    ${Mobile_Number_Location}    ${Mobile_Number}
+    #wait until element is enabled    ${HR_MailID}
+    #click element    ${HR_MailID}
+    #input text    ${HR_MailID}    ${RANDOM_STRING}@gmail.com
+    #click element    ${Priority}
+    #click element    ${Priority_Select}
+    click element    ${checkBOx}
+    #click element    ${Insuff}
+    #click element    ${Insuff_Comment_Location}
+    #input text    ${Insuff_Comment_Location}    ${Insuff_Comment}
+    #wait until element is enabled    ${YTR}
+    #click element    ${YTR}
+    #click element    ${YTR_Comment_Location}
+    #input text    ${YTR_Comment_Location}    ${YTR_Comment}
+    #click element    ${RP}
+    #click element    ${RP_Comment_Location}
+    #input text    ${RP_Comment_Location}    ${RP_Comment}
+    click element    ${DataBase_CheckAll}
+    #click element    ${Case_Document}
+    #wait until element is enabled    ${upload_button}    5s
+    #choose file    ${upload_button}    ${File1}
+    #wait until element is enabled    ${componenttype}
+    #click element    ${componenttype}
+    #click element    ${component_option}
+    #wait until element is enabled    ${documenttype}
+    #click element    ${documenttype}
+    #click element    ${document_option}
+    #wait until element is enabled    ${document_download}
+    #click element    ${document_download}
+    #sleep    2s
+    #click element    ${Upload_Ok}
+    #sleep    2s
+    #click element    ${Case_Document}
+    #sleep    2s
+    #click element    ${document_delete}
+    #wait until element is enabled    ${Conformation_Alert_yes}
+    #Element Text Should Be    ${Save_But_Alert}    ${document_delete_Alert}
+    #click element    ${Conformation_Alert_yes}
+    #sleep    2s
+    #click element    ${Upload_Ok}
+    sleep    3s
+    click element    ${Save_Submit}
+    Close Browser
+
+To Validate for Project Services Provider Flow click Save button
+    Close Browser
+    sleep    3s
+    Login
+    Random String
+    sleep    3s
+    click element    ${Case_Registration}
+    wait until element is enabled    ${Register_New_Case}
+    click element    ${Register_New_Case}
+    wait until element is enabled    ${Client_Project}
+    click element    ${Client_Project}
+    input text    ${Client_Location}    ${Project1}
+    click element    ${Client_Select}
+    wait until element is enabled    ${Data_Entry}
+    click element    ${Data_Entry}
+    wait until element is enabled    ${Service Provider}
+    click element    ${Service Provider}
+    wait until element is enabled    ${First_Name_Location}
+    input text    ${First_Name_Location}    ${TEMP_FIRST_NAME}
+    input text    ${Last_Name_Location}    ${TEMP_LAST_NAME}
+    click element    ${Date_Of_Birth}
+    click element    ${Month}
+    click element    ${Years}
+    click element    ${Year}
+    click element    ${Select_Year}
+    click element    ${Select_Month}
+    click element    ${Select_Day}
+    click element    ${Gender_Location}
+    click element    ${Gender_Select}
+    wait until element is enabled    ${Email_Location}
+    input text    ${Email_Location}    ${RANDOM_STRING}@gmail.com
+    input text    ${Father_First_Name_Location}    ${TEMP_FIRST_NAME}
+    input text    ${Father_Last_Name_Location}    ${TEMP_LAST_NAME}
+    #sleep    3s
+    click element    ${Client_ID}
+    input text    ${Client_ID}    ${Client_Ref_NO}
+    click element    ${Marital_Status}
+    click element    ${Marital_Status_Select}
+    click element    ${Employe_ID_Location}
+    input text    ${Employe_ID_Location}    ${Employe_ID}
+    input text    ${Landline_Number_Location}    ${Landline_Number}
+    input text    ${Mobile_Number_Location}    ${Mobile_Number}
+    #wait until element is enabled    ${HR_MailID}
+    #click element    ${HR_MailID}
+    #input text    ${HR_MailID}    ${RANDOM_STRING}@gmail.com
+    #click element    ${Priority}
+    #click element    ${Priority_Select}
+    click element    ${checkBOx}
+    #click element    ${Insuff}
+    #click element    ${Insuff_Comment_Location}
+    #input text    ${Insuff_Comment_Location}    ${Insuff_Comment}
+    #wait until element is enabled    ${YTR}
+    #click element    ${YTR}
+    #click element    ${YTR_Comment_Location}
+    #input text    ${YTR_Comment_Location}    ${YTR_Comment}
+    #click element    ${RP}
+    #click element    ${RP_Comment_Location}
+    #input text    ${RP_Comment_Location}    ${RP_Comment}
+    click element    ${DataBase_CheckAll}
+    #click element    ${Case_Document}
+    #wait until element is enabled    ${upload_button}    5s
+    #choose file    ${upload_button}    ${File1}
+    #wait until element is enabled    ${componenttype}
+    #click element    ${componenttype}
+    #click element    ${component_option}
+    #wait until element is enabled    ${documenttype}
+    #click element    ${documenttype}
+    #click element    ${document_option}
+    #wait until element is enabled    ${document_download}
+    #click element    ${document_download}
+    #sleep    2s
+    #click element    ${Upload_Ok}
+    #sleep    2s
+    #click element    ${Case_Document}
+    #sleep    2s
+    #click element    ${document_delete}
+    #wait until element is enabled    ${Conformation_Alert_yes}
+    #Element Text Should Be    ${Save_But_Alert}    ${document_delete_Alert}
+    #click element    ${Conformation_Alert_yes}
+    #sleep    2s
+    #click element    ${Upload_Ok}
+    sleep    3s
+    click element    ${Save}
+    Close Browser
+
+To Validate for Project Candidate Flow in Save & Submit
+    Close Browser
+    sleep    3s
+    Login
+    Random String
+    sleep    3s
+    click element    ${Case_Registration}
+    wait until element is enabled    ${Register_New_Case}
+    click element    ${Register_New_Case}
+    wait until element is enabled    ${Client_Project}
+    click element    ${Client_Project}
+    input text    ${Client_Location}    ${Project1}
+    click element    ${Client_Select}
+    wait until element is enabled    ${Data_Entry}
+    click element    ${Data_Entry}
+    wait until element is enabled    ${Service Provider}
+    click element    ${Service Provider}
+    wait until element is enabled    ${First_Name_Location}
+    input text    ${First_Name_Location}    ${TEMP_FIRST_NAME}
+    input text    ${Last_Name_Location}    ${TEMP_LAST_NAME}
+    click element    ${Date_Of_Birth}
+    click element    ${Month}
+    click element    ${Years}
+    click element    ${Year}
+    click element    ${Select_Year}
+    click element    ${Select_Month}
+    click element    ${Select_Day}
+    click element    ${Gender_Location}
+    click element    ${Gender_Select}
+    wait until element is enabled    ${Email_Location}
+    input text    ${Email_Location}    ${RANDOM_STRING}@gmail.com
+    input text    ${Father_First_Name_Location}    ${TEMP_FIRST_NAME}
+    input text    ${Father_Last_Name_Location}    ${TEMP_LAST_NAME}
+    #sleep    3s
+    click element    ${Client_ID}
+    input text    ${Client_ID}    ${Client_Ref_NO}
+    click element    ${Marital_Status}
+    click element    ${Marital_Status_Select}
+    click element    ${Employe_ID_Location}
+    input text    ${Employe_ID_Location}    ${Employe_ID}
+    input text    ${Landline_Number_Location}    ${Landline_Number}
+    input text    ${Mobile_Number_Location}    ${Mobile_Number}
+    #wait until element is enabled    ${HR_MailID}
+    #click element    ${HR_MailID}
+    #input text    ${HR_MailID}    ${RANDOM_STRING}@gmail.com
+    #click element    ${Priority}
+    #click element    ${Priority_Select}
+    click element    ${checkBOx}
+    #click element    ${Insuff}
+    #click element    ${Insuff_Comment_Location}
+    #input text    ${Insuff_Comment_Location}    ${Insuff_Comment}
+    #wait until element is enabled    ${YTR}
+    #click element    ${YTR}
+    #click element    ${YTR_Comment_Location}
+    #input text    ${YTR_Comment_Location}    ${YTR_Comment}
+    #click element    ${RP}
+    #click element    ${RP_Comment_Location}
+    #input text    ${RP_Comment_Location}    ${RP_Comment}
+    click element    ${DataBase_CheckAll}
+    #click element    ${Case_Document}
+    #wait until element is enabled    ${upload_button}    5s
+    #choose file    ${upload_button}    ${File1}
+    #wait until element is enabled    ${componenttype}
+    #click element    ${componenttype}
+    #click element    ${component_option}
+    #wait until element is enabled    ${documenttype}
+    #click element    ${documenttype}
+    #click element    ${document_option}
+    #wait until element is enabled    ${document_download}
+    #click element    ${document_download}
+    #sleep    2s
+    #click element    ${Upload_Ok}
+    #sleep    2s
+    #click element    ${Case_Document}
+    #sleep    2s
+    #click element    ${document_delete}
+    #wait until element is enabled    ${Conformation_Alert_yes}
+    #Element Text Should Be    ${Save_But_Alert}    ${document_delete_Alert}
+    #click element    ${Conformation_Alert_yes}
+    #sleep    2s
+    #click element    ${Upload_Ok}
+    sleep    3s
+    click element    ${Save_Submit}
+    Close Browser
+
+To Validate for Project Candidate Flow in Save
+    Close Browser
+    sleep    3s
+    Login
+    Random String
+    sleep    3s
+    click element    ${Case_Registration}
+    wait until element is enabled    ${Register_New_Case}
+    click element    ${Register_New_Case}
+    wait until element is enabled    ${Client_Project}
+    click element    ${Client_Project}
+    input text    ${Client_Location}    ${Project1}
+    click element    ${Client_Select}
+    wait until element is enabled    ${Data_Entry}
+    click element    ${Data_Entry}
+    wait until element is enabled    ${Candidate}
+    click element    ${Candidate}
+    wait until element is enabled    ${First_Name_Location}
+    input text    ${First_Name_Location}    ${TEMP_FIRST_NAME}
+    input text    ${Last_Name_Location}    ${TEMP_LAST_NAME}
+    click element    ${Date_Of_Birth}
+    click element    ${Month}
+    click element    ${Years}
+    click element    ${Year}
+    click element    ${Select_Year}
+    click element    ${Select_Month}
+    click element    ${Select_Day}
+    click element    ${Gender_Location}
+    click element    ${Gender_Select}
+    wait until element is enabled    ${Email_Location}
+    input text    ${Email_Location}    ${RANDOM_STRING}@gmail.com
+    input text    ${Father_First_Name_Location}    ${TEMP_FIRST_NAME}
+    input text    ${Father_Last_Name_Location}    ${TEMP_LAST_NAME}
+    #sleep    3s
+    click element    ${Client_ID}
+    input text    ${Client_ID}    ${Client_Ref_NO}
+    click element    ${Marital_Status}
+    click element    ${Marital_Status_Select}
+    click element    ${Employe_ID_Location}
+    input text    ${Employe_ID_Location}    ${Employe_ID}
+    input text    ${Landline_Number_Location}    ${Landline_Number}
+    input text    ${Mobile_Number_Location}    ${Mobile_Number}
+    click element    ${Priority}
+    click element    ${Priority_Select}
+    #wait until element is enabled    ${HR_MailID}
+    #click element    ${HR_MailID}
+    #input text    ${HR_MailID}    ${RANDOM_STRING}@gmail.com
+    #click element    ${Priority}
+    #click element    ${Priority_Select}
+    click element    ${checkBOx}
+    #click element    ${Insuff}
+    #click element    ${Insuff_Comment_Location}
+    #input text    ${Insuff_Comment_Location}    ${Insuff_Comment}
+    #wait until element is enabled    ${YTR}
+    #click element    ${YTR}
+    #click element    ${YTR_Comment_Location}
+    #input text    ${YTR_Comment_Location}    ${YTR_Comment}
+    #click element    ${RP}
+    #click element    ${RP_Comment_Location}
+    #input text    ${RP_Comment_Location}    ${RP_Comment}
+    click element    ${DataBase_CheckAll}
+    #click element    ${Case_Document}
+    #wait until element is enabled    ${upload_button}    5s
+    #choose file    ${upload_button}    ${File1}
+    #wait until element is enabled    ${componenttype}
+    #click element    ${componenttype}
+    #click element    ${component_option}
+    #wait until element is enabled    ${documenttype}
+    #click element    ${documenttype}
+    #click element    ${document_option}
+    #wait until element is enabled    ${document_download}
+    #click element    ${document_download}
+    #sleep    2s
+    #click element    ${Upload_Ok}
+    #sleep    2s
+    #click element    ${Case_Document}
+    #sleep    2s
+    #click element    ${document_delete}
+    #wait until element is enabled    ${Conformation_Alert_yes}
+    #Element Text Should Be    ${Save_But_Alert}    ${document_delete_Alert}
+    #click element    ${Conformation_Alert_yes}
+    #sleep    2s
+    #click element    ${Upload_Ok}
+    sleep    3s
+    click element    ${Save}
+    Close Browser
+
+To Validate for Document upload and delete actions in case registration
+    Close Browser
+    sleep    3s
+    Login
+    Random String
+    sleep    3s
+    click element    ${Case_Registration}
+    wait until element is enabled    ${Register_New_Case}
+    click element    ${Register_New_Case}
+    wait until element is enabled    ${Client_Project}
+    click element    ${Client_Project}
+    input text    ${Client_Location}    ${Client1}
+    click element    ${Client_Select}
+    click element    ${Case_Document}
+    wait until element is enabled    ${upload_button}    5s
+    choose file    ${upload_button}    ${File1}
+    wait until element is enabled    ${componenttype}
+    click element    ${componenttype}
+    click element    ${component_option}
+    wait until element is enabled    ${documenttype}
+    click element    ${documenttype}
+    click element    ${document_option}
+    wait until element is enabled    ${document_download}
+    click element    ${document_download}
+    sleep    2s
+    click element    ${Upload_Ok}
+    sleep    2s
+    click element    ${Case_Document}
+    #wait until element is enabled    ${upload_button}    5s
+    #choose file    ${upload_button}    ${File2}
+    #sleep    2s
+    sleep    2s
+    click element    ${document_delete}
+    sleep    2s
+    Element Text Should Be    ${Alert_Message}    ${document_delete_Alert}
+    sleep    1s
+    click element    ${Conformation_Alert_yes}
+    sleep    1s
+    click element    ${Upload_Ok}
+    sleep    1s
+    click element    ${Save_Submit}
+    Close Browser
+
+To Validate for Select Client and click save & submit Button
+    Close Browser
+    sleep    3s
+    Login
+    Random String
+    sleep    3s
+    click element    ${Case_Registration}
+    sleep    2s
+    click element    ${Register_New_Case}
+    wait until element is enabled    ${Client_Project}
+    click element    ${Client_Project}
+    input text    ${Client_Location}    ${Client1}
+    click element    ${Client_Select}
+    sleep    2s
+    click element    ${Save_Submit}
+    wait until element is enabled    ${Save_But_Alert}
+    Close Browser
+
+To Validate for Without selecting the Client and Project click save & submit Button
+    Close Browser
+    sleep    3s
+    Login
+    Random String
+    sleep    3s
+    click element    ${Case_Registration}
+    sleep    3s
+    click element    ${Register_New_Case}
+    sleep    3s
+    Element Should Be Disabled    ${Save_Submit}
+    sleep    3s
+    Element Should Be Enabled    ${Save}
+    click element    ${Save}
+    sleep    2s
+    Element Should Contain    ${Alert_Message}    ${Mandatory_Alert}
+    Click Element    ${Save_ok}
+    Close Browser
+
+To Validate for Without selecting the Client and Project Enter First Name & Last Name and click save & submit Button
+    Close Browser
+    sleep    3s
+    Login
+    Random String
+    sleep    3s
+    click element    ${Case_Registration}
+    wait until element is enabled    ${Register_New_Case}
+    click element    ${Register_New_Case}
+    wait until element is enabled    ${First_Name_Location}
+    input text    ${First_Name_Location}    ${TEMP_FIRST_NAME}
+    input text    ${Last_Name_Location}    ${TEMP_LAST_NAME}
+    Element Should Be Disabled    ${Save_Submit}
+    Element Should Be Enabled    ${Save}
+    click element    ${Save}
+    sleep    2s
+    Element Should Contain    ${Alert_Message}    ${Mandatory_Alert}
+    Click Element    ${Save_ok}
+    Close Browser
+
+To Validate for Without selecting the Client and Project Enter Date of Birth and click save & submit Button
+    Close Browser
+    sleep    3s
+    Login
+    Random String
+    sleep    3s
+    click element    ${Case_Registration}
+    wait until element is enabled    ${Register_New_Case}
+    click element    ${Register_New_Case}
+    wait until element is enabled    ${Date_Of_Birth}
+    click element    ${Date_Of_Birth}
+    click element    ${Month}
+    click element    ${Years}
+    click element    ${Year}
+    click element    ${Select_Year}
+    click element    ${Select_Month}
+    click element    ${Select_Day}
+    Element Should Be Disabled    ${Save_Submit}
+    Element Should Be Enabled    ${Save}
+    click element    ${Save}
+    sleep    2s
+    Element Should Contain    ${Alert_Message}    ${Mandatory_Alert}
+    Click Element    ${Save_ok}
+    Close Browser
+
+To Validate for Without selecting the Client and Project Select Gender and click save & submit Button
+    Close Browser
+    sleep    3s
+    Login
+    Random String
+    sleep    3s
+    click element    ${Case_Registration}
+    wait until element is enabled    ${Register_New_Case}
+    click element    ${Register_New_Case}
+    wait until element is enabled    ${Gender_Location}
+    click element    ${Gender_Location}
+    click element    ${Gender_Select}
+    Element Should Be Disabled    ${Save_Submit}
+    Element Should Be Enabled    ${Save}
+    click element    ${Save}
+    sleep    2s
+    Element Should Contain    ${Alert_Message}    ${Mandatory_Alert}
+    Click Element    ${Save_ok}
+    Close Browser
+
+To Validate for Without selecting the Client and Project Enter Email and click save & submit Button
+    Close Browser
+    sleep    3s
+    Login
+    Random String
+    sleep    3s
+    click element    ${Case_Registration}
+    wait until element is enabled    ${Register_New_Case}
+    click element    ${Register_New_Case}
+    wait until element is enabled    ${Email_Location}
+    input text    ${Email_Location}    ${RANDOM_STRING}@gmail.com
+    Element Should Be Disabled    ${Save_Submit}
+    Element Should Be Enabled    ${Save}
+    click element    ${Save}
+    sleep    2s
+    #Element Should Contain    ${Alert_Message}    ${Mandatory_Alert}
+    Click Element    ${Save_ok}
+    Close Browser
+
+To Validate for Without selecting the Client and Project Select Priority and click save & submit Button
+    Close Browser
+    sleep    3s
+    Login
+    Random String
+    sleep    3s
+    click element    ${Case_Registration}
+    wait until element is enabled    ${Register_New_Case}
+    click element    ${Register_New_Case}
+    wait until element is enabled    ${Priority}
+    click element    ${Priority}
+    click element    ${Priority_Select}
+    Element Should Be Disabled    ${Save_Submit}
+    Element Should Be Enabled    ${Save}
+    click element    ${Save}
+    sleep    2s
+    Element Should Contain    ${Alert_Message}    ${Mandatory_Alert}
+    Click Element    ${Save_ok}
+    Close Browser
+
+To Validate for With selecting the Client and Project click save & submit Button
+    Close Browser
+    sleep    3s
+    Login
+    Random String
+    sleep    3s
+    click element    ${Case_Registration}
+    sleep    3s
+    click element    ${Register_New_Case}
+    sleep    3s
+    wait until element is enabled    ${Client_Project}
+    click element    ${Client_Project}
+    input text    ${Client_Location}    ${Client1}
+    click element    ${Client_Select}
+    sleep    2s
+    Element Should Be Enabled    ${Save_Submit}
+    sleep    3s
+    Element Should Be Enabled    ${Save}
+    click element    ${Save_Submit}
+    sleep    2s
+    Element Should Contain    ${Alert_Message}    ${Mandatory_Alert}
+    Click Element    ${Save_ok}
+    Close Browser
+
+To Validate for With selecting the Client and Project Enter First Name & Last Name and click save & submit Button
+    Close Browser
+    sleep    3s
+    Login
+    Random String
+    sleep    3s
+    click element    ${Case_Registration}
+    wait until element is enabled    ${Register_New_Case}
+    click element    ${Register_New_Case}
+    wait until element is enabled    ${Client_Project}
+    click element    ${Client_Project}
+    input text    ${Client_Location}    ${Client1}
+    click element    ${Client_Select}
+    sleep    2s
+    wait until element is enabled    ${First_Name_Location}
+    input text    ${First_Name_Location}    ${TEMP_FIRST_NAME}
+    input text    ${Last_Name_Location}    ${TEMP_LAST_NAME}
+    sleep    2s
+    Element Should Be Enabled    ${Save_Submit}
+    Element Should Be Enabled    ${Save}
+    click element    ${Save_Submit}
+    sleep    2s
+    Element Should Contain    ${Alert_Message}    ${Mandatory_Alert}
+    Click Element    ${Save_ok}
+    Close Browser
+
+To Validate for With selecting the Client and Project Enter Date of Birth and click save & submit Button
+    Close Browser
+    sleep    3s
+    Login
+    Random String
+    sleep    3s
+    click element    ${Case_Registration}
+    wait until element is enabled    ${Register_New_Case}
+    click element    ${Register_New_Case}
+    wait until element is enabled    ${Client_Project}
+    click element    ${Client_Project}
+    input text    ${Client_Location}    ${Client1}
+    click element    ${Client_Select}
+    sleep    2s
+    wait until element is enabled    ${Date_Of_Birth}
+    click element    ${Date_Of_Birth}
+    click element    ${Month}
+    click element    ${Years}
+    click element    ${Year}
+    click element    ${Select_Year}
+    click element    ${Select_Month}
+    click element    ${Select_Day}
+    sleep    2s
+    Element Should Be Enabled    ${Save_Submit}
+    Element Should Be Enabled    ${Save}
+    click element    ${Save_Submit}
+    sleep    2s
+    Element Should Contain    ${Alert_Message}    ${Mandatory_Alert}
+    Click Element    ${Save_ok}
+    Close Browser
+
+To Validate for With selecting the Client and Project Select Gender and click save & submit Button
+    Close Browser
+    sleep    3s
+    Login
+    Random String
+    sleep    3s
+    click element    ${Case_Registration}
+    wait until element is enabled    ${Register_New_Case}
+    click element    ${Register_New_Case}
+    wait until element is enabled    ${Client_Project}
+    click element    ${Client_Project}
+    input text    ${Client_Location}    ${Client1}
+    click element    ${Client_Select}
+    sleep    2s
+    wait until element is enabled    ${Gender_Location}
+    click element    ${Gender_Location}
+    click element    ${Gender_Select}
+    Element Should Be Enabled    ${Save_Submit}
+    Element Should Be Enabled    ${Save}
+    click element    ${Save_Submit}
+    sleep    2s
+    Element Should Contain    ${Alert_Message}    ${Mandatory_Alert}
+    Click Element    ${Save_ok}
+    Close Browser
+
+To Validate for With selecting the Client and Project Enter Email and click save & submit Button
+    Close Browser
+    sleep    3s
+    Login
+    Random String
+    sleep    3s
+    click element    ${Case_Registration}
+    wait until element is enabled    ${Register_New_Case}
+    click element    ${Register_New_Case}
+    wait until element is enabled    ${Client_Project}
+    click element    ${Client_Project}
+    input text    ${Client_Location}    ${Client1}
+    click element    ${Client_Select}
+    sleep    2s
+    wait until element is enabled    ${Email_Location}
+    input text    ${Email_Location}    ${RANDOM_STRING}@gmail.com
+    Element Should Be Enabled    ${Save_Submit}
+    Element Should Be Enabled    ${Save}
+    click element    ${Save_Submit}
+    sleep    2s
+    Element Should Contain    ${Alert_Message}    ${Mandatory_Alert}
+    Click Element    ${Save_ok}
+    Close Browser
+
+To Validate for With selecting the Client and Project Select Priority and click save & submit Button
+    Close Browser
+    sleep    3s
+    Login
+    Random String
+    sleep    3s
+    click element    ${Case_Registration}
+    wait until element is enabled    ${Register_New_Case}
+    click element    ${Register_New_Case}
+    wait until element is enabled    ${Client_Project}
+    click element    ${Client_Project}
+    input text    ${Client_Location}    ${Client1}
+    click element    ${Client_Select}
+    sleep    2s
+    wait until element is enabled    ${Priority}
+    click element    ${Priority}
+    click element    ${Priority_Select}
+    Element Should Be Enabled    ${Save_Submit}
+    Element Should Be Enabled    ${Save}
+    click element    ${Save_Submit}
+    sleep    2s
+    Element Should Contain    ${Alert_Message}    ${Mandatory_Alert}
+    Click Element    ${Save_ok}
+    Close Browser
+
+To Validate for Validation case registration name field
+    Close Browser
+    sleep    3s
+    Login
+    Random String
+    sleep    3s
+    click element    ${Case_Registration}
+    wait until element is enabled    ${Register_New_Case}
+    click element    ${Register_New_Case}
+    wait until element is enabled    ${Client_Project}
+    click element    ${Client_Project}
+    input text    ${Client_Location}    ${Client1}
+    click element    ${Client_Select}
+    wait until element is enabled    ${Data_Entry}
+    click element    ${Data_Entry}
+    wait until element is enabled    ${Service Provider}
+    click element    ${Service Provider}
+    wait until element is enabled    ${First_Name_Location}
+    input text    ${First_Name_Location}    ${Invalid_name}
+    input text    ${Last_Name_Location}    ${Invalid_name}
+    click element    ${Date_Of_Birth}
+    click element    ${Month}
+    click element    ${Years}
+    click element    ${Year}
+    click element    ${Select_Year}
+    click element    ${Select_Month}
+    click element    ${Select_Day}
+    click element    ${Gender_Location}
+    click element    ${Gender_Select}
+    wait until element is enabled    ${Email_Location}
+    input text    ${Email_Location}    ${RANDOM_STRING}@gmail.com
+    input text    ${Father_First_Name_Location}    ${Invalid_name}
+    input text    ${Father_Last_Name_Location}    ${Invalid_name}
+    click element    ${Client_ID}
+    input text    ${Client_ID}    ${Client_Ref_NO}
+    #wait until element is enabled    ${HR_MailID}
+    #click element    ${HR_MailID}
+    #input text    ${HR_MailID}    ${RANDOM_STRING}@gmail.com
+    click element    ${Priority}
+    click element    ${Priority_Select}
+    Element Should Be Enabled    ${Save_Submit}
+    sleep    2s
+    click element    ${Save_Submit}
+    Close Browser
+
+To validate for phone number fields
+    Close Browser
+    sleep    3s
+    Login
+    Random String
+    sleep    3s
+    click element    ${Case_Registration}
+    wait until element is enabled    ${Register_New_Case}
+    click element    ${Register_New_Case}
+    wait until element is enabled    ${Client_Project}
+    click element    ${Client_Project}
+    input text    ${Client_Location}    ${Client1}
+    click element    ${Client_Select}
+    input text    ${Landline_Number_Location}    ${Invalid_symbol}
+    Press key    ${Landline_Number_Location}    \\13
+    sleep    3s
+    Element Text Should Be    ${Save_But_Alert}    ${phone_Alert}
+    click element    ${Save_ok}
+    input text    ${Landline_Number_Location}    ${Invalid_charter}
+    Press key    ${Landline_Number_Location}    \\13
+    sleep    3s
+    Element Text Should Be    ${Save_But_Alert}    ${phone_Alert}
+    click element    ${Save_ok}
+    input text    ${Landline_Number_Location}    ${Invalid_number}
+    Press key    ${Landline_Number_Location}    \\13
+    sleep    3s
+    Element Text Should Be    ${Save_But_Alert}    ${phone_Alert}
+    click element    ${Save_ok}
+    sleep    3s
+    input text    ${Mobile_Number_Location}    ${Invalid_number}
+    Press key    ${Mobile_Number_Location}    \\13
+    sleep    5s
+    Element Text Should Be    ${Save_But_Alert}    ${phone_Alert}
+    click element    ${Save_ok}
+    input text    ${Mobile_Number_Location}    ${Invalid_charter}
+    Press key    ${Mobile_Number_Location}    \\13
+    sleep    5s
+    Element Text Should Be    ${Save_But_Alert}    ${phone_Alert}
+    click element    ${Save_ok}
+    input text    ${Mobile_Number_Location}    ${Invalid_symbol}
+    Press key    ${Mobile_Number_Location}    \\13
+    sleep    5s
+    Element Text Should Be    ${Save_But_Alert}    ${phone_Alert}
+    click element    ${Save_ok}
+    close Browser
+
+To validate for service provider save & submit data move to data entry dash board
+    Close Browser
+    sleep    3s
+    Login
+    Random String
+    Random String Search values
+    sleep    3s
+    click element    ${Case_Registration}
+    sleep    3s
+    click element    ${Register_New_Case}
+    sleep    3s
+    click element    ${Client_Project}
+    input text    ${Client_Location}    ${Client1}
+    click element    ${Client_Select}
+    sleep    3s
+    click element    ${Data_Entry}
+    sleep    2s
+    click element    ${Service Provider}
+    sleep    2s
+    Clear Element Text    ${First_Name_Location}
+    input text    ${First_Name_Location}    ${TEMP_FIRST_NAME}
+    Clear Element Text    ${Last_Name_Location}
+    input text    ${Last_Name_Location}    ${TEMP_LAST_NAME}
+    click element    ${Date_Of_Birth}
+    click element    ${Month}
+    click element    ${Years}
+    click element    ${Year}
+    click element    ${Select_Year}
+    click element    ${Select_Month}
+    click element    ${Select_Day}
+    click element    ${Gender_Location}
+    click element    ${Gender_Select}
+    sleep    2s
+    input text    ${Email_Location}    ${RANDOM_STRING}@gmail.com
+    input text    ${Father_First_Name_Location}    ${TEMP_FIRST_NAME}
+    input text    ${Father_Last_Name_Location}    ${TEMP_LAST_NAME}
+    click element    ${Client_ID}
+    input text    ${Client_ID}    ${Client_Ref_NO}
+    #click element    ${HR_MailID}
+    #input text    ${HR_MailID}    ${RANDOM_STRING}@gmail.com
+    click element    ${Priority}
+    click element    ${Priority_Select}
+    click element    ${checkBOx}
+    sleep    3s
+    click element    ${Save_Submit}
+    sleep    3s
+    click element    ${Save_ok}
+    sleep    5s
+    click element    ${DataEntrySupervision}
+    sleep    3s
+    click element    ${DE_DB_Client}
+    input text    ${DE_DB_Cli_Text}    ${Client1}
+    click element    ${DE_DB_Cli_Selc}
+    input text    ${DE_Firstname_Location}    ${FIRST_NAME}
+    input text    ${DE_Lastname_Location}    ${LAST_NAME}
+    sleep    3s
+    Page Should Contain    ${Client1}
+    Page Should Contain    ${FIRST_NAME}
+    Page Should Contain    ${LAST_NAME}
+    click element    ${Search_Button}
+
+To validate for candidate data save temprory should show in case registration dash board
+    Close Browser
+    sleep    3s
+    Login
+    Random String
+    Random String Search values
+    sleep    3s
+    click element    ${Case_Registration}
+    wait until element is enabled    ${Register_New_Case}
+    click element    ${Register_New_Case}
+    wait until element is enabled    ${Client_Project}
+    click element    ${Client_Project}
+    input text    ${Client_Location}    ${Client1}
+    click element    ${Client_Select}
+    wait until element is enabled    ${Data_Entry}
+    click element    ${Data_Entry}
+    wait until element is enabled    ${Candidate}
+    click element    ${Candidate}
+    wait until element is enabled    ${First_Name_Location}
+    input text    ${First_Name_Location}    ${TEMP_FIRST_NAME}
+    input text    ${Last_Name_Location}    ${TEMP_LAST_NAME}
+    click element    ${Date_Of_Birth}
+    click element    ${Month}
+    click element    ${Years}
+    click element    ${Year}
+    click element    ${Select_Year}
+    click element    ${Select_Month}
+    click element    ${Select_Day}
+    click element    ${Gender_Location}
+    click element    ${Gender_Select}
+    wait until element is enabled    ${Email_Location}
+    input text    ${Email_Location}    ${RANDOM_STRING}@gmail.com
+    input text    ${Father_First_Name_Location}    ${TEMP_FIRST_NAME}
+    input text    ${Father_Last_Name_Location}    ${TEMP_LAST_NAME}
+    #sleep    3s
+    click element    ${Client_ID}
+    input text    ${Client_ID}    ${Client_Ref_NO}
+    click element    ${Marital_Status}
+    click element    ${Marital_Status_Select}
+    click element    ${Employe_ID_Location}
+    input text    ${Employe_ID_Location}    ${Employe_ID}
+    input text    ${Landline_Number_Location}    ${Landline_Number}
+    input text    ${Mobile_Number_Location}    ${Mobile_Number}
+    click element    ${Priority}
+    click element    ${Priority_Select}
+    sleep    2s
+    wait until element is enabled    ${HR_MailID}
+    click element    ${HR_MailID}
+    input text    ${HR_MailID}    ${RANDOM_STRING}@gmail.com
+    click element    ${checkBOx}
+    sleep    3s
+    click element    ${Save_Submit}
+    sleep    3s
+    click element    ${Save_ok}
+    sleep    5s
+    wait until element is enabled    ${Case_Registration}
+    click element    ${Case_Registration}
+    wait until element is enabled    ${Case_DB_Client}
+    click element    ${Case_DB_Client}
+    input text    ${Case_DB_Cli_Text}    ${client1}
+    click element    ${Case_DB_Cli_Selc}
+    wait until element is enabled    ${Case_DB_Firstname}
+    input text    ${Case_DB_Firstname}    ${FIRST_NAME}
+    wait until element is enabled    ${Case_DB_Lastname}
+    input text    ${Case_DB_Lastname}    ${LAST_NAME}
+    sleep    3s
+    click element    ${Search_Button}
+    sleep    3s
+    Page Should Contain    ${Client1}
+    Page Should Contain    ${FIRST_NAME}
+    Page Should Contain    ${LAST_NAME}
+    close Browser
+
+To Validate for Temporary saved cases should not move to show in data entry stage
+    Close Browser
+    sleep    3s
+    Login
+    Random String
+    Random String Search values
+    sleep    3s
+    click element    ${Case_Registration}
+    wait until element is enabled    ${Register_New_Case}
+    click element    ${Register_New_Case}
+    wait until element is enabled    ${Client_Project}
+    click element    ${Client_Project}
+    input text    ${Client_Location}    ${Client1}
+    click element    ${Client_Select}
+    wait until element is enabled    ${Data_Entry}
+    click element    ${Data_Entry}
+    wait until element is enabled    ${Candidate}
+    click element    ${Candidate}
+    wait until element is enabled    ${First_Name_Location}
+    input text    ${First_Name_Location}    ${TEMP_FIRST_NAME}
+    input text    ${Last_Name_Location}    ${TEMP_FIRST_NAME}
+    click element    ${Date_Of_Birth}
+    click element    ${Month}
+    click element    ${Years}
+    click element    ${Year}
+    click element    ${Select_Year}
+    click element    ${Select_Month}
+    click element    ${Select_Day}
+    click element    ${Gender_Location}
+    click element    ${Gender_Select}
+    wait until element is enabled    ${Email_Location}
+    input text    ${Email_Location}    ${RANDOM_STRING}@gmail.com
+    input text    ${Father_First_Name_Location}    ${TEMP_FIRST_NAME}
+    input text    ${Father_Last_Name_Location}    ${TEMP_FIRST_NAME}
+    #sleep    3s
+    click element    ${Client_ID}
+    input text    ${Client_ID}    ${Client_Ref_NO}
+    click element    ${Marital_Status}
+    click element    ${Marital_Status_Select}
+    click element    ${Employe_ID_Location}
+    input text    ${Employe_ID_Location}    ${Employe_ID}
+    input text    ${Landline_Number_Location}    ${Landline_Number}
+    input text    ${Mobile_Number_Location}    ${Mobile_Number}
+    click element    ${Priority}
+    click element    ${Priority_Select}
+    wait until element is enabled    ${HR_MailID}
+    click element    ${HR_MailID}
+    input text    ${HR_MailID}    ${RANDOM_STRING}@gmail.com
+    click element    ${checkBOx}
+    sleep    3s
+    click element    ${Save}
+    sleep    3s
+    click element    ${Save_ok}
+    sleep    5s
+    click element    ${DataEntrySupervision}
+    sleep    3s
+    input text    ${DE_Firstname_Location}    ${FIRST_NAME}
+    input text    ${DE_Lastname_Location}    ${FIRST_NAME}
+    sleep    3s
+    click element    ${Search_Button}
+    Clear Element Text    ${DE_Firstname_Location}
+    Clear Element Text    ${DE_Lastname_Location}
+    sleep    2s
+    Page Should Not Contain    ${FIRST_NAME}
+    Page Should Not Contain    ${FIRST_NAME}
+
+To validate for the Stop Case.
+    Close Browser
+    sleep    3s
+    Login
+    sleep    3s
+    click element    ${CaseManager}
+    click element    ${Case_Search_Text}
+    input text    ${Case_Search_Text}    The King
+    click element    ${Case_Search}
+    #wait until element is enabled    ${Stop_case}
+    #click element    ${Stop_case}
+    #wait until element is enabled    ${Stop_Case_Comment}
+    #//button[text()='Stop Case']
+    #click element    ${Stop_Case_Comment}
+    #input text    ${Stop_Case_Comment}    ${Stop_Comment}
+    #click element    ${Stop_Case_button}
+    #sleep    3s
+    #click element    ${Case_Modify}
+    #click element    ${Add_Component}
+    #click element    ${Delete_Component}
+    close Browser
+
+To validate for the components Selection
+    Close browser
+    sleep    3s
+    Login
+    Random String
+    sleep    3s
+    click element    ${Case_Registration}
+    wait until element is enabled    ${Register_New_Case}
+    click element    ${Register_New_Case}
+    wait until element is enabled    ${Client_Project}
+    click element    ${Client_Project}
+    input text    ${Client_Location}    ${Client1}
+    click element    ${Client_Select}
+    wait until element is enabled    ${Data_Entry}
+    click element    ${Data_Entry}
+    wait until element is enabled    ${Candidate}
+    click element    ${Candidate}
+    wait until element is enabled    ${First_Name_Location}
+    input text    ${First_Name_Location}    ${TEMP_FIRST_NAME}
+    input text    ${Last_Name_Location}    ${TEMP_LAST_NAME}
+    Compounds Selection
+    close Browser
+
+To validate for Registering a duplicate case for same client
+    Close Browser
+    sleep    3s
+    Login
+    Random String
+    Random String Search values
+    sleep    3s
+    click element    ${Case_Registration}
+    wait until element is enabled    ${Register_New_Case}
+    click element    ${Register_New_Case}
+    wait until element is enabled    ${Client_Project}
+    click element    ${Client_Project}
+    input text    ${Client_Location}    ${Client1}
+    click element    ${Client_Select}
+    wait until element is enabled    ${Data_Entry}
+    click element    ${Data_Entry}
+    wait until element is enabled    ${Candidate}
+    click element    ${Candidate}
+    wait until element is enabled    ${First_Name_Location}
+    input text    ${First_Name_Location}    ${TEMP_FIRST_NAME}
+    input text    ${Last_Name_Location}    ${TEMP_LAST_NAME}
+    click element    ${Date_Of_Birth}
+    click element    ${Month}
+    click element    ${Years}
+    click element    ${Year}
+    click element    ${Select_Year}
+    click element    ${Select_Month}
+    click element    ${Select_Day}
+    click element    ${Gender_Location}
+    click element    ${Gender_Select}
+    wait until element is enabled    ${Email_Location}
+    input text    ${Email_Location}    ${RANDOM_STRING}@gmail.com
+    input text    ${Father_First_Name_Location}    ${TEMP_FIRST_NAME}
+    input text    ${Father_Last_Name_Location}    ${TEMP_LAST_NAME}
+    #sleep    3s
+    click element    ${Client_ID}
+    input text    ${Client_ID}    ${Client_Ref_NO}
+    click element    ${Marital_Status}
+    click element    ${Marital_Status_Select}
+    click element    ${Employe_ID_Location}
+    input text    ${Employe_ID_Location}    ${Employe_ID}
+    input text    ${Landline_Number_Location}    ${Landline_Number}
+    input text    ${Mobile_Number_Location}    ${Mobile_Number}
+    click element    ${Priority}
+    click element    ${Priority_Select}
+    sleep    2s
+    wait until element is enabled    ${HR_MailID}
+    click element    ${HR_MailID}
+    input text    ${HR_MailID}    ${RANDOM_STRING}@gmail.com
+    click element    ${checkBOx}
+    sleep    3s
+    click element    ${Save_Submit}
+    sleep    3s
+    click element    ${Save_ok}
+    sleep    5s
+    wait until element is enabled    ${Case_Registration}
+    click element    ${Case_Registration}
+    wait until element is enabled    ${Case_DB_Client}
+    click element    ${Case_DB_Client}
+    input text    ${Case_DB_Cli_Text}    ${client1}
+    click element    ${Case_DB_Cli_Selc}
+    wait until element is enabled    ${Case_DB_Firstname}
+    input text    ${Case_DB_Firstname}    ${FIRST_NAME}
+    wait until element is enabled    ${Case_DB_Lastname}
+    input text    ${Case_DB_Lastname}    ${LAST_NAME}
+    sleep    3s
+    click element    ${Search_Button}
+    sleep    3s
+    ${REF_NO}=    Get Text    ${Case_DB_REFNO}
+    Log To Console    ${REF_NO}
+    click element    ${Case_Registration}
+    wait until element is enabled    ${Register_New_Case}
+    click element    ${Register_New_Case}
+    wait until element is enabled    ${Client_Project}
+    click element    ${Client_Project}
+    input text    ${Client_Location}    ${Client1}
+    click element    ${Client_Select}
+    wait until element is enabled    ${Data_Entry}
+    click element    ${Data_Entry}
+    wait until element is enabled    ${Candidate}
+    click element    ${Candidate}
+    wait until element is enabled    ${First_Name_Location}
+    input text    ${First_Name_Location}    ${TEMP_FIRST_NAME}
+    input text    ${Last_Name_Location}    ${TEMP_LAST_NAME}
+    click element    ${Date_Of_Birth}
+    click element    ${Month}
+    click element    ${Years}
+    click element    ${Year}
+    click element    ${Select_Year}
+    click element    ${Select_Month}
+    click element    ${Select_Day}
+    click element    ${Gender_Location}
+    click element    ${Gender_Select}
+    wait until element is enabled    ${Email_Location}
+    input text    ${Email_Location}    ${RANDOM_STRING}@gmail.com
+    input text    ${Father_First_Name_Location}    ${TEMP_FIRST_NAME}
+    input text    ${Father_Last_Name_Location}    ${TEMP_LAST_NAME}
+    #sleep    3s
+    click element    ${Client_ID}
+    input text    ${Client_ID}    ${Client_Ref_NO}
+    click element    ${Marital_Status}
+    click element    ${Marital_Status_Select}
+    click element    ${Employe_ID_Location}
+    input text    ${Employe_ID_Location}    ${Employe_ID}
+    input text    ${Landline_Number_Location}    ${Landline_Number}
+    input text    ${Mobile_Number_Location}    ${Mobile_Number}
+    click element    ${Priority}
+    click element    ${Priority_Select}
+    sleep    2s
+    wait until element is enabled    ${HR_MailID}
+    click element    ${HR_MailID}
+    input text    ${HR_MailID}    ${RANDOM_STRING}@gmail.com
+    click element    ${checkBOx}
+    sleep    3s
+    click element    ${Save_Submit}
+    sleep    2s
+    Element Should Contain    ${Save_But_Alert}    ${REF_NO}
+    sleep    3s
+    click element    ${Save_ok}
+    close Browser
+
+To validate for Registering a duplicate case for Other client with same email id when the existing registered case is in progress (Candidte Flow)
+    Close Browser
+    sleep    3s
+    Login
+    Random String
+    Random String Search values
+    sleep    3s
+    click element    ${Case_Registration}
+    wait until element is enabled    ${Register_New_Case}
+    click element    ${Register_New_Case}
+    wait until element is enabled    ${Client_Project}
+    click element    ${Client_Project}
+    input text    ${Client_Location}    ${Client1}
+    click element    ${Client_Select}
+    wait until element is enabled    ${Data_Entry}
+    click element    ${Data_Entry}
+    wait until element is enabled    ${Candidate}
+    click element    ${Candidate}
+    wait until element is enabled    ${First_Name_Location}
+    input text    ${First_Name_Location}    ${TEMP_FIRST_NAME}
+    input text    ${Last_Name_Location}    ${TEMP_LAST_NAME}
+    click element    ${Date_Of_Birth}
+    click element    ${Month}
+    click element    ${Years}
+    click element    ${Year}
+    click element    ${Select_Year}
+    click element    ${Select_Month}
+    click element    ${Select_Day}
+    click element    ${Gender_Location}
+    click element    ${Gender_Select}
+    wait until element is enabled    ${Email_Location}
+    input text    ${Email_Location}    ${RANDOM_STRING}@gmail.com
+    input text    ${Father_First_Name_Location}    ${TEMP_FIRST_NAME}
+    input text    ${Father_Last_Name_Location}    ${TEMP_LAST_NAME}
+    #sleep    3s
+    click element    ${Client_ID}
+    input text    ${Client_ID}    ${Client_Ref_NO}
+    click element    ${Marital_Status}
+    click element    ${Marital_Status_Select}
+    click element    ${Employe_ID_Location}
+    input text    ${Employe_ID_Location}    ${Employe_ID}
+    input text    ${Landline_Number_Location}    ${Landline_Number}
+    input text    ${Mobile_Number_Location}    ${Mobile_Number}
+    click element    ${Priority}
+    click element    ${Priority_Select}
+    sleep    2s
+    wait until element is enabled    ${HR_MailID}
+    click element    ${HR_MailID}
+    input text    ${HR_MailID}    ${RANDOM_STRING}@gmail.com
+    click element    ${checkBOx}
+    sleep    3s
+    click element    ${Save_Submit}
+    sleep    2s
+    Element Should Contain    ${Save_But_Alert}    ${Save_submit_Candiate}
+    sleep    2s
+    click element    ${Save_ok}
+    sleep    5s
+    click element    ${Case_Registration}
+    wait until element is enabled    ${Register_New_Case}
+    click element    ${Register_New_Case}
+    wait until element is enabled    ${Client_Project}
+    click element    ${Client_Project}
+    input text    ${Client_Location}    ${client2}
+    click element    ${Client_Select}
+    wait until element is enabled    ${Data_Entry}
+    click element    ${Data_Entry}
+    wait until element is enabled    ${Candidate}
+    click element    ${Candidate}
+    wait until element is enabled    ${First_Name_Location}
+    input text    ${First_Name_Location}    ${TEMP_FIRST_NAME}
+    input text    ${Last_Name_Location}    ${TEMP_LAST_NAME}
+    click element    ${Date_Of_Birth}
+    click element    ${Month}
+    click element    ${Years}
+    click element    ${Year}
+    click element    ${Select_Year}
+    click element    ${Select_Month}
+    click element    ${Select_Day}
+    click element    ${Gender_Location}
+    click element    ${Gender_Select}
+    wait until element is enabled    ${Email_Location}
+    input text    ${Email_Location}    ${TEMP_FIRST_NAME}@gmail.com
+    input text    ${Father_First_Name_Location}    ${TEMP_FIRST_NAME}
+    input text    ${Father_Last_Name_Location}    ${TEMP_LAST_NAME}
+    #sleep    3s
+    click element    ${Client_ID}
+    input text    ${Client_ID}    ${Client_Ref_NO}
+    click element    ${Marital_Status}
+    click element    ${Marital_Status_Select}
+    click element    ${Employe_ID_Location}
+    input text    ${Employe_ID_Location}    ${Employe_ID}
+    input text    ${Landline_Number_Location}    ${Landline_Number}
+    input text    ${Mobile_Number_Location}    ${Mobile_Number}
+    click element    ${Priority}
+    click element    ${Priority_Select}
+    sleep    2s
+    wait until element is enabled    ${HR_MailID}
+    click element    ${HR_MailID}
+    input text    ${HR_MailID}    ${RANDOM_STRING}@gmail.com
+    click element    ${checkBOx}
+    sleep    3s
+    click element    ${Save_Submit}
+    sleep    2s
+    Element Should Contain    ${Save_But_Alert}    ${Save_submit_Candiate}
+    sleep    3s
+    click element    ${Save_ok}
+    sleep    2s
+    close Browser
+
+To validate for Registering a duplicate case for Other client with same email id when the existing registered case is in progress (Service Provider Flow)
+    Close Browser
+    sleep    3s
+    Login
+    Random String
+    Random String Search values
+    sleep    3s
+    click element    ${Case_Registration}
+    wait until element is enabled    ${Register_New_Case}
+    click element    ${Register_New_Case}
+    wait until element is enabled    ${Client_Project}
+    click element    ${Client_Project}
+    input text    ${Client_Location}    ${Client1}
+    click element    ${Client_Select}
+    wait until element is enabled    ${Data_Entry}
+    click element    ${Data_Entry}
+    wait until element is enabled    ${Service_Provider}
+    click element    ${Service_Provider}
+    wait until element is enabled    ${First_Name_Location}
+    input text    ${First_Name_Location}    ${TEMP_FIRST_NAME}
+    input text    ${Last_Name_Location}    ${TEMP_LAST_NAME}
+    click element    ${Date_Of_Birth}
+    click element    ${Month}
+    click element    ${Years}
+    click element    ${Year}
+    click element    ${Select_Year}
+    click element    ${Select_Month}
+    click element    ${Select_Day}
+    click element    ${Gender_Location}
+    click element    ${Gender_Select}
+    wait until element is enabled    ${Email_Location}
+    input text    ${Email_Location}    ${RANDOM_STRING}@gmail.com
+    input text    ${Father_First_Name_Location}    ${TEMP_FIRST_NAME}
+    input text    ${Father_Last_Name_Location}    ${TEMP_LAST_NAME}
+    #sleep    3s
+    click element    ${Client_ID}
+    input text    ${Client_ID}    ${Client_Ref_NO}
+    click element    ${Marital_Status}
+    click element    ${Marital_Status_Select}
+    click element    ${Employe_ID_Location}
+    input text    ${Employe_ID_Location}    ${Employe_ID}
+    input text    ${Landline_Number_Location}    ${Landline_Number}
+    input text    ${Mobile_Number_Location}    ${Mobile_Number}
+    click element    ${Priority}
+    click element    ${Priority_Select}
+    #sleep    2s
+    #wait until element is enabled    ${HR_MailID}
+    #click element    ${HR_MailID}
+    #input text    ${HR_MailID}    ${RANDOM_STRING}@gmail.com
+    click element    ${checkBOx}
+    sleep    3s
+    click element    ${Save_Submit}
+    sleep    2s
+    Element Should Contain    ${Save_But_Alert}    ${Save_submit_Alert}
+    sleep    2s
+    click element    ${Save_ok}
+    sleep    5s
+    click element    ${Case_Registration}
+    wait until element is enabled    ${Register_New_Case}
+    click element    ${Register_New_Case}
+    wait until element is enabled    ${Client_Project}
+    click element    ${Client_Project}
+    input text    ${Client_Location}    ${client2}
+    click element    ${Client_Select}
+    wait until element is enabled    ${Data_Entry}
+    click element    ${Data_Entry}
+    wait until element is enabled    ${Service_Provider}
+    click element    ${Service_Provider}
+    wait until element is enabled    ${First_Name_Location}
+    input text    ${First_Name_Location}    ${TEMP_FIRST_NAME}
+    input text    ${Last_Name_Location}    ${TEMP_LAST_NAME}
+    click element    ${Date_Of_Birth}
+    click element    ${Month}
+    click element    ${Years}
+    click element    ${Year}
+    click element    ${Select_Year}
+    click element    ${Select_Month}
+    click element    ${Select_Day}
+    click element    ${Gender_Location}
+    click element    ${Gender_Select}
+    wait until element is enabled    ${Email_Location}
+    input text    ${Email_Location}    ${TEMP_FIRST_NAME}@gmail.com
+    input text    ${Father_First_Name_Location}    ${TEMP_FIRST_NAME}
+    input text    ${Father_Last_Name_Location}    ${TEMP_LAST_NAME}
+    #sleep    3s
+    click element    ${Client_ID}
+    input text    ${Client_ID}    ${Client_Ref_NO}
+    click element    ${Marital_Status}
+    click element    ${Marital_Status_Select}
+    click element    ${Employe_ID_Location}
+    input text    ${Employe_ID_Location}    ${Employe_ID}
+    input text    ${Landline_Number_Location}    ${Landline_Number}
+    input text    ${Mobile_Number_Location}    ${Mobile_Number}
+    click element    ${Priority}
+    click element    ${Priority_Select}
+    #sleep    2s
+    #wait until element is enabled    ${HR_MailID}
+    #click element    ${HR_MailID}
+    #input text    ${HR_MailID}    ${RANDOM_STRING}@gmail.com
+    click element    ${checkBOx}
+    sleep    3s
+    click element    ${Save_Submit}
+    sleep    2s
+    Element Should Contain    ${Save_But_Alert}    ${Save_submit_Alert}
+    sleep    3s
+    click element    ${Save_ok}
+    sleep    2s
+    close Browser
+
+To validate for Registering a duplicate case for Other client with same email id when the existing registered case is in progress (Service Provider Flow & Candidate Flow)
+    Close Browser
+    sleep    3s
+    Login
+    Random String
+    Random String Search values
+    sleep    3s
+    click element    ${Case_Registration}
+    wait until element is enabled    ${Register_New_Case}
+    click element    ${Register_New_Case}
+    wait until element is enabled    ${Client_Project}
+    click element    ${Client_Project}
+    input text    ${Client_Location}    ${Client1}
+    click element    ${Client_Select}
+    wait until element is enabled    ${Data_Entry}
+    click element    ${Data_Entry}
+    wait until element is enabled    ${Service_Provider}
+    click element    ${Service_Provider}
+    wait until element is enabled    ${First_Name_Location}
+    input text    ${First_Name_Location}    ${TEMP_FIRST_NAME}
+    input text    ${Last_Name_Location}    ${TEMP_LAST_NAME}
+    click element    ${Date_Of_Birth}
+    click element    ${Month}
+    click element    ${Years}
+    click element    ${Year}
+    click element    ${Select_Year}
+    click element    ${Select_Month}
+    click element    ${Select_Day}
+    click element    ${Gender_Location}
+    click element    ${Gender_Select}
+    wait until element is enabled    ${Email_Location}
+    input text    ${Email_Location}    ${RANDOM_STRING}@gmail.com
+    input text    ${Father_First_Name_Location}    ${TEMP_FIRST_NAME}
+    input text    ${Father_Last_Name_Location}    ${TEMP_LAST_NAME}
+    #sleep    3s
+    click element    ${Client_ID}
+    input text    ${Client_ID}    ${Client_Ref_NO}
+    click element    ${Marital_Status}
+    click element    ${Marital_Status_Select}
+    click element    ${Employe_ID_Location}
+    input text    ${Employe_ID_Location}    ${Employe_ID}
+    input text    ${Landline_Number_Location}    ${Landline_Number}
+    input text    ${Mobile_Number_Location}    ${Mobile_Number}
+    click element    ${Priority}
+    click element    ${Priority_Select}
+    #sleep    2s
+    #wait until element is enabled    ${HR_MailID}
+    #click element    ${HR_MailID}
+    #input text    ${HR_MailID}    ${RANDOM_STRING}@gmail.com
+    click element    ${checkBOx}
+    sleep    3s
+    click element    ${Save_Submit}
+    sleep    2s
+    Element Should Contain    ${Save_But_Alert}    ${Save_submit_Alert}
+    sleep    2s
+    click element    ${Save_ok}
+    sleep    5s
+    click element    ${Case_Registration}
+    wait until element is enabled    ${Register_New_Case}
+    click element    ${Register_New_Case}
+    wait until element is enabled    ${Client_Project}
+    click element    ${Client_Project}
+    input text    ${Client_Location}    ${client2}
+    click element    ${Client_Select}
+    wait until element is enabled    ${Data_Entry}
+    click element    ${Data_Entry}
+    wait until element is enabled    ${Candidate}
+    click element    ${Candidate}
+    wait until element is enabled    ${First_Name_Location}
+    input text    ${First_Name_Location}    ${TEMP_FIRST_NAME}
+    input text    ${Last_Name_Location}    ${TEMP_LAST_NAME}
+    click element    ${Date_Of_Birth}
+    click element    ${Month}
+    click element    ${Years}
+    click element    ${Year}
+    click element    ${Select_Year}
+    click element    ${Select_Month}
+    click element    ${Select_Day}
+    click element    ${Gender_Location}
+    click element    ${Gender_Select}
+    wait until element is enabled    ${Email_Location}
+    input text    ${Email_Location}    ${TEMP_FIRST_NAME}@gmail.com
+    input text    ${Father_First_Name_Location}    ${TEMP_FIRST_NAME}
+    input text    ${Father_Last_Name_Location}    ${TEMP_LAST_NAME}
+    #sleep    3s
+    click element    ${Client_ID}
+    input text    ${Client_ID}    ${Client_Ref_NO}
+    click element    ${Marital_Status}
+    click element    ${Marital_Status_Select}
+    click element    ${Employe_ID_Location}
+    input text    ${Employe_ID_Location}    ${Employe_ID}
+    input text    ${Landline_Number_Location}    ${Landline_Number}
+    input text    ${Mobile_Number_Location}    ${Mobile_Number}
+    click element    ${Priority}
+    click element    ${Priority_Select}
+    sleep    2s
+    wait until element is enabled    ${HR_MailID}
+    click element    ${HR_MailID}
+    input text    ${HR_MailID}    ${RANDOM_STRING}@gmail.com
+    click element    ${checkBOx}
+    sleep    3s
+    click element    ${Save_Submit}
+    sleep    2s
+    Element Should Contain    ${Save_But_Alert}    ${Save_submit_Candiate}
+    sleep    3s
+    click element    ${Save_ok}
+    sleep    2s
+    close Browser
+
+To validate for Registering a duplicate case for Other client with same email id when the existing registered case is in progress (Candidate Flow & Service Provider Flow)
+    Close Browser
+    sleep    3s
+    Login
+    Random String
+    Random String Search values
+    sleep    3s
+    click element    ${Case_Registration}
+    wait until element is enabled    ${Register_New_Case}
+    click element    ${Register_New_Case}
+    wait until element is enabled    ${Client_Project}
+    click element    ${Client_Project}
+    input text    ${Client_Location}    ${Client1}
+    click element    ${Client_Select}
+    wait until element is enabled    ${Data_Entry}
+    click element    ${Data_Entry}
+    wait until element is enabled    ${Candidate}
+    click element    ${Candidate}
+    wait until element is enabled    ${First_Name_Location}
+    input text    ${First_Name_Location}    ${TEMP_FIRST_NAME}
+    input text    ${Last_Name_Location}    ${TEMP_LAST_NAME}
+    click element    ${Date_Of_Birth}
+    click element    ${Month}
+    click element    ${Years}
+    click element    ${Year}
+    click element    ${Select_Year}
+    click element    ${Select_Month}
+    click element    ${Select_Day}
+    click element    ${Gender_Location}
+    click element    ${Gender_Select}
+    wait until element is enabled    ${Email_Location}
+    input text    ${Email_Location}    ${RANDOM_STRING}@gmail.com
+    input text    ${Father_First_Name_Location}    ${TEMP_FIRST_NAME}
+    input text    ${Father_Last_Name_Location}    ${TEMP_LAST_NAME}
+    #sleep    3s
+    click element    ${Client_ID}
+    input text    ${Client_ID}    ${Client_Ref_NO}
+    click element    ${Marital_Status}
+    click element    ${Marital_Status_Select}
+    click element    ${Employe_ID_Location}
+    input text    ${Employe_ID_Location}    ${Employe_ID}
+    input text    ${Landline_Number_Location}    ${Landline_Number}
+    input text    ${Mobile_Number_Location}    ${Mobile_Number}
+    click element    ${Priority}
+    click element    ${Priority_Select}
+    sleep    2s
+    wait until element is enabled    ${HR_MailID}
+    click element    ${HR_MailID}
+    input text    ${HR_MailID}    ${RANDOM_STRING}@gmail.com
+    click element    ${checkBOx}
+    sleep    3s
+    click element    ${Save_Submit}
+    sleep    2s
+    Element Should Contain    ${Save_But_Alert}    ${Save_submit_Candiate}
+    sleep    2s
+    click element    ${Save_ok}
+    sleep    5s
+    click element    ${Case_Registration}
+    wait until element is enabled    ${Register_New_Case}
+    click element    ${Register_New_Case}
+    wait until element is enabled    ${Client_Project}
+    click element    ${Client_Project}
+    input text    ${Client_Location}    ${client2}
+    click element    ${Client_Select}
+    wait until element is enabled    ${Data_Entry}
+    click element    ${Data_Entry}
+    wait until element is enabled    ${Service_Provider}
+    click element    ${Service_Provider}
+    wait until element is enabled    ${First_Name_Location}
+    input text    ${First_Name_Location}    ${TEMP_FIRST_NAME}
+    input text    ${Last_Name_Location}    ${TEMP_LAST_NAME}
+    click element    ${Date_Of_Birth}
+    click element    ${Month}
+    click element    ${Years}
+    click element    ${Year}
+    click element    ${Select_Year}
+    click element    ${Select_Month}
+    click element    ${Select_Day}
+    click element    ${Gender_Location}
+    click element    ${Gender_Select}
+    wait until element is enabled    ${Email_Location}
+    input text    ${Email_Location}    ${TEMP_FIRST_NAME}@gmail.com
+    input text    ${Father_First_Name_Location}    ${TEMP_FIRST_NAME}
+    input text    ${Father_Last_Name_Location}    ${TEMP_LAST_NAME}
+    #sleep    3s
+    click element    ${Client_ID}
+    input text    ${Client_ID}    ${Client_Ref_NO}
+    click element    ${Marital_Status}
+    click element    ${Marital_Status_Select}
+    click element    ${Employe_ID_Location}
+    input text    ${Employe_ID_Location}    ${Employe_ID}
+    input text    ${Landline_Number_Location}    ${Landline_Number}
+    input text    ${Mobile_Number_Location}    ${Mobile_Number}
+    click element    ${Priority}
+    click element    ${Priority_Select}
+    #sleep    2s
+    #wait until element is enabled    ${HR_MailID}
+    #click element    ${HR_MailID}
+    #input text    ${HR_MailID}    ${RANDOM_STRING}@gmail.com
+    click element    ${checkBOx}
+    sleep    3s
+    click element    ${Save_Submit}
+    sleep    2s
+    Element Should Contain    ${Save_But_Alert}    ${Save_submit_Alert}
+    sleep    3s
+    click element    ${Save_ok}
+    sleep    2s
+    close Browser
+
+To Validate for due date column once the case was registered
+    Close Browser
+    sleep    3s
+    Login
+    Random String
+    Random String Search values
+    sleep    3s
+    click element    ${Case_Registration}
+    sleep    3s
+    click element    ${Register_New_Case}
+    sleep    3s
+    click element    ${Client_Project}
+    input text    ${Client_Location}    ${Client1}
+    click element    ${Client_Select}
+    sleep    3s
+    click element    ${Data_Entry}
+    sleep    2s
+    click element    ${Service Provider}
+    sleep    2s
+    Clear Element Text    ${First_Name_Location}
+    input text    ${First_Name_Location}    ${TEMP_FIRST_NAME}
+    Clear Element Text    ${Last_Name_Location}
+    input text    ${Last_Name_Location}    ${TEMP_LAST_NAME}
+    click element    ${Date_Of_Birth}
+    click element    ${Month}
+    click element    ${Years}
+    click element    ${Year}
+    click element    ${Select_Year}
+    click element    ${Select_Month}
+    click element    ${Select_Day}
+    click element    ${Gender_Location}
+    click element    ${Gender_Select}
+    sleep    2s
+    input text    ${Email_Location}    ${RANDOM_STRING}@gmail.com
+    input text    ${Father_First_Name_Location}    ${TEMP_FIRST_NAME}
+    input text    ${Father_Last_Name_Location}    ${TEMP_LAST_NAME}
+    click element    ${Client_ID}
+    input text    ${Client_ID}    ${Client_Ref_NO}
+    #click element    ${HR_MailID}
+    #input text    ${HR_MailID}    ${RANDOM_STRING}@gmail.com
+    click element    ${Priority}
+    click element    ${Priority_Select}
+    click element    ${checkBOx}
+    sleep    3s
+    click element    ${Save_Submit}
+    sleep    3s
+    click element    ${Save_ok}
+    sleep    5s
+    click element    ${DataEntrySupervision}
+    sleep    3s
+    click element    ${DE_DB_Client}
+    input text    ${DE_DB_Cli_Text}    ${Client1}
+    click element    ${DE_DB_Cli_Selc}
+    input text    ${DE_Firstname_Location}    ${FIRST_NAME}
+    input text    ${DE_Lastname_Location}    ${LAST_NAME}
+    sleep    3s
+    Page Should Contain    ${Client1}
+    Page Should Contain    ${FIRST_NAME}
+    Page Should Contain    ${LAST_NAME}
+    click element    ${Search_Button}
+    Sleep    3s
+    Element Text Should Be    ${DE_DB_DueDate}    ${DE_Due_Date}
+    Sleep    3s
+    Element Text Should Be    ${DE_DB_DueDate_Value}    ${Due_Date}
+    close Browser
+
+To validate for show only the registered component in data entry stage
+    Close Browser
+    sleep    3s
+    Login
+    Random String
+    Random String Search values
+    sleep    3s
+    click element    ${Case_Registration}
+    sleep    3s
+    click element    ${Register_New_Case}
+    sleep    3s
+    click element    ${Client_Project}
+    input text    ${Client_Location}    ${Client1}
+    click element    ${Client_Select}
+    sleep    3s
+    click element    ${Data_Entry}
+    sleep    2s
+    click element    ${Service Provider}
+    sleep    2s
+    Clear Element Text    ${First_Name_Location}
+    input text    ${First_Name_Location}    ${TEMP_FIRST_NAME}
+    Clear Element Text    ${Last_Name_Location}
+    input text    ${Last_Name_Location}    ${TEMP_LAST_NAME}
+    click element    ${Date_Of_Birth}
+    click element    ${Month}
+    click element    ${Years}
+    click element    ${Year}
+    click element    ${Select_Year}
+    click element    ${Select_Month}
+    click element    ${Select_Day}
+    click element    ${Gender_Location}
+    click element    ${Gender_Select}
+    sleep    2s
+    input text    ${Email_Location}    ${RANDOM_STRING}@gmail.com
+    input text    ${Father_First_Name_Location}    ${TEMP_FIRST_NAME}
+    input text    ${Father_Last_Name_Location}    ${TEMP_LAST_NAME}
+    click element    ${Client_ID}
+    input text    ${Client_ID}    ${Client_Ref_NO}
+    #click element    ${HR_MailID}
+    #input text    ${HR_MailID}    ${RANDOM_STRING}@gmail.com
+    click element    ${Priority}
+    click element    ${Priority_Select}
+    ${Componentxpath}=    set variable    //*[@id='table']/tbody/tr/td/label/strong
+    ${Count}=    Get matching xpath count    ${Componentxpath}
+    Set Global Variable    ${Componentxpath}
+    #Log To Console    ${Count}
+    : FOR    ${INDEX}    IN RANGE    1    ${Count}+1
+    \    #Log To Console    ${INDEX}
+    \    Set Global Variable    ${INDEX}
+    \    ${components}=    Get Text    xpath=(${Componentxpath})[${INDEX}]
+    \    Set Global Variable    ${components}
+    \    Run Keyword If    '${components}' == 'Highest 1'    Run Keyword    Check BOX
+    \    Run Keyword If    '${components}' == 'Reference 1'    Run Keyword    Check BOX
+    \    Run Keyword If    '${components}' == 'Database'    Run Keyword    Check BOX
+    sleep    3s
+    click element    ${Save_Submit}
+    sleep    3s
+    click element    ${Save_ok}
+    sleep    5s
+    click element    ${DataEntrySupervision}
+    sleep    3s
+    click element    ${DE_DB_Client}
+    input text    ${DE_DB_Cli_Text}    ${Client1}
+    click element    ${DE_DB_Cli_Selc}
+    input text    ${DE_Firstname_Location}    ${FIRST_NAME}
+    input text    ${DE_Lastname_Location}    ${LAST_NAME}
+    sleep    3s
+    Page Should Contain    ${Client1}
+    Page Should Contain    ${FIRST_NAME}
+    Page Should Contain    ${LAST_NAME}
+    click element    ${Search_Button}
+    Sleep    3s
+    click element    ${Case_DB_REFNO}
+
+To validate for candidate data save temprory and then click save and submit button
+    Close Browser
+    sleep    3s
+    Login
+    Random String
+    Random String Search values
+    sleep    3s
+    click element    ${Case_Registration}
+    wait until element is enabled    ${Register_New_Case}
+    click element    ${Register_New_Case}
+    wait until element is enabled    ${Client_Project}
+    click element    ${Client_Project}
+    input text    ${Client_Location}    ${Client1}
+    click element    ${Client_Select}
+    wait until element is enabled    ${Data_Entry}
+    click element    ${Data_Entry}
+    wait until element is enabled    ${Candidate}
+    click element    ${Candidate}
+    wait until element is enabled    ${First_Name_Location}
+    input text    ${First_Name_Location}    ${TEMP_FIRST_NAME}
+    input text    ${Last_Name_Location}    ${TEMP_LAST_NAME}
+    click element    ${Date_Of_Birth}
+    click element    ${Month}
+    click element    ${Years}
+    click element    ${Year}
+    click element    ${Select_Year}
+    click element    ${Select_Month}
+    click element    ${Select_Day}
+    click element    ${Gender_Location}
+    click element    ${Gender_Select}
+    wait until element is enabled    ${Email_Location}
+    input text    ${Email_Location}    ${RANDOM_STRING}@gmail.com
+    input text    ${Father_First_Name_Location}    ${TEMP_FIRST_NAME}
+    input text    ${Father_Last_Name_Location}    ${TEMP_LAST_NAME}
+    #sleep    3s
+    click element    ${Client_ID}
+    input text    ${Client_ID}    ${Client_Ref_NO}
+    click element    ${Marital_Status}
+    click element    ${Marital_Status_Select}
+    click element    ${Employe_ID_Location}
+    input text    ${Employe_ID_Location}    ${Employe_ID}
+    input text    ${Landline_Number_Location}    ${Landline_Number}
+    input text    ${Mobile_Number_Location}    ${Mobile_Number}
+    click element    ${Priority}
+    click element    ${Priority_Select}
+    sleep    2s
+    wait until element is enabled    ${HR_MailID}
+    click element    ${HR_MailID}
+    input text    ${HR_MailID}    ${RANDOM_STRING}@gmail.com
+    click element    ${checkBOx}
+    sleep    3s
+    click element    ${Save}
+    sleep    3s
+    click element    ${Save_ok}
+    sleep    5s
+    wait until element is enabled    ${Case_Registration}
+    click element    ${Case_Registration}
+    wait until element is enabled    ${Case_DB_Client}
+    click element    ${Case_DB_Client}
+    input text    ${Case_DB_Cli_Text}    ${client1}
+    click element    ${Case_DB_Cli_Selc}
+    wait until element is enabled    ${Case_DB_Firstname}
+    input text    ${Case_DB_Firstname}    ${FIRST_NAME}
+    wait until element is enabled    ${Case_DB_Lastname}
+    input text    ${Case_DB_Lastname}    ${LAST_NAME}
+    sleep    3s
+    click element    ${Search_Button}
+    sleep    3s
+    Page Should Contain    ${Client1}
+    Page Should Contain    ${FIRST_NAME}
+    Page Should Contain    ${LAST_NAME}
+    sleep    3s
+    click element    ${Case_DB_REFNO}
+    sleep    3s
+    click element    ${Save_Submit}
+    sleep    3s
+    click element    ${Save_ok}
+
+To validate for the Phone number & Mobile number must accept Three numbers.
+    Close Browser
+    sleep    3s
+    Login
+    Random String
+    Random String Search values
+    sleep    3s
+    click element    ${Case_Registration}
+    wait until element is enabled    ${Register_New_Case}
+    click element    ${Register_New_Case}
+    wait until element is enabled    ${Client_Project}
+    click element    ${Client_Project}
+    input text    ${Client_Location}    ${Client1}
+    click element    ${Client_Select}
+    wait until element is enabled    ${Data_Entry}
+    click element    ${Data_Entry}
+    wait until element is enabled    ${Candidate}
+    click element    ${Candidate}
+    wait until element is enabled    ${First_Name_Location}
+    input text    ${First_Name_Location}    ${TEMP_FIRST_NAME}
+    input text    ${Last_Name_Location}    ${TEMP_LAST_NAME}
+    click element    ${Date_Of_Birth}
+    click element    ${Month}
+    click element    ${Years}
+    click element    ${Year}
+    click element    ${Select_Year}
+    click element    ${Select_Month}
+    click element    ${Select_Day}
+    click element    ${Gender_Location}
+    click element    ${Gender_Select}
+    wait until element is enabled    ${Email_Location}
+    input text    ${Email_Location}    ${RANDOM_STRING}@gmail.com
+    input text    ${Father_First_Name_Location}    ${TEMP_FIRST_NAME}
+    input text    ${Father_Last_Name_Location}    ${TEMP_LAST_NAME}
+    #sleep    3s
+    click element    ${Client_ID}
+    input text    ${Client_ID}    ${Client_Ref_NO}
+    click element    ${Marital_Status}
+    click element    ${Marital_Status_Select}
+    click element    ${Employe_ID_Location}
+    input text    ${Employe_ID_Location}    ${Employe_ID}
+    click element    ${Priority}
+    click element    ${Priority_Select}
+    sleep    2s
+    wait until element is enabled    ${HR_MailID}
+    click element    ${HR_MailID}
+    input text    ${Landline_Number_Location}    ${RANDOM_NUMBER}
+    Random String
+    input text    ${Landline_Number_Location}    ${RANDOM_NUMBER}
+    Random String
+    input text    ${Landline_Number_Location}    ${RANDOM_NUMBER}
+    Random String
+    input text    ${Landline_Number_Location}    ${RANDOM_NUMBER}
+    ${Gmail_Count}=    Get matching xpath count    //input[@id='landLineNumber']/following-sibling::div/span
+    Should Be True    ${Gmail_Count} <= 3
+    Log To Console    ${Gmail_Count}
+    input text    ${Mobile_Number_Location}    ${RANDOM_NUMBER}
+    Random String
+    input text    ${Mobile_Number_Location}    ${RANDOM_NUMBER}
+    Random String
+    input text    ${Mobile_Number_Location}    ${RANDOM_NUMBER}
+    Random String
+    input text    ${Mobile_Number_Location}    ${RANDOM_NUMBER}
+    ${Gmail_Count}=    Get matching xpath count    //input[@id='contactnum']/following-sibling::div/span
+    Should Be True    ${Gmail_Count} <= 3
+    Log To Console    ${Gmail_Count}
+    Close Browser
+
+To Validate for based on the contract compounts will show in the DE
+    Close browser
+    sleep    3s
+    Login
+    Random String
+    sleep    3s
+    click element    ${Case_Registration}
+    wait until element is enabled    ${Register_New_Case}
+    click element    ${Register_New_Case}
+    wait until element is enabled    ${Client_Project}
+    click element    ${Client_Project}
+    input text    ${Client_Location}    ${Client1}
+    click element    ${Client_Select}
+    wait until element is enabled    ${Data_Entry}
+    click element    ${Data_Entry}
+    wait until element is enabled    ${Candidate}
+    click element    ${Candidate}
+    wait until element is enabled    ${First_Name_Location}
+    input text    ${First_Name_Location}    ${TEMP_FIRST_NAME}
+    input text    ${Last_Name_Location}    ${TEMP_LAST_NAME}
+    @{values}=    Create List    Highest 1    Highest 2    Reference 1    Employment 1(Latest/Current)    Current Address
+    ...    Permanent Address    Database
+    ${count_values}=    Get Length    ${values}
+    Set Global Variable    ${count_values}
+    ${Componentxpath}=    set variable    //*[@id='table']/tbody/tr/td/label/strong
+    ${Count}=    Get matching xpath count    ${Componentxpath}
+    Set Global Variable    ${Componentxpath}
+    #Log To Console    ${Count}
+    : FOR    ${INDEX}    IN RANGE    1    ${Count}+1
+    \    #Log To Console    ${INDEX}
+    \    Set Global Variable    ${INDEX}
+    \    ${components}=    Get Text    xpath=(${Componentxpath})[${INDEX}]
+    \    Set Global Variable    ${components}
+    \    #Log To Console    INDEX:${INDEX}    COPONENTS:${components}
+    \    List Should Contain Value    ${values}    ${components}
+    sleep    3s
+    close browser

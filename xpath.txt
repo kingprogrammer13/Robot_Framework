@@ -1,0 +1,7 @@
+for="10thinsuff"
+for="12thinsuff"
+for="Diploma/ITIinsuff"
+for="Under Graduate 1insuff"
+for="Under Graduate 2insuff"
+for="Under Graduate 3insuff"
+for="Under Graduate 4insuff"

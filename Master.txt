@@ -1,0 +1,38 @@
+*** Settings ***
+Library           Selenium2Library
+Library           String
+Variables         myvariables.py
+Variables         Case_Reg_Values.py
+Resource          Login.robot
+Resource          Case_Registration.robot
+Variables         Case_Reg_Alerts.py
+Variables         Case_Reg_Path.py
+Variables         DataEntry_Path.py
+Variables         DataEntry_Values.py
+Variables         CaseManager_Path.py
+Variables         CaseManager_Values.py
+Variables         Master_Path.py
+Variables         Master_Values.py
+
+*** Test Cases ***
+project master
+    Login
+    Random String
+    sleep    3s
+    click element    ${Client}
+    wait until element is visible    ${Projects}
+    click element    ${Projects}
+    wait until element is visible    ${Projects_Name_Location}
+    input text    ${Projects_Name_Location}    ${Project_Name}
+    wait until element is enabled    ${Client_Project}
+    click element    ${Client_Project}
+    input text    ${Project_Client_Location}    ${Project1}
+    click element    ${Client_Select}
+    sleep    2s
+    click element    ${Search_Button}
+    sleep    2s
+    click element    ${Project_Edit}
+    sleep    2s
+    #Checkbox Should Not Be Selected    ${Project_checkBox}
+    Checkbox Should Be Selected    ${Project_checkBox}
+    close browser
